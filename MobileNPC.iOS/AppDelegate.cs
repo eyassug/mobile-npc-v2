@@ -26,6 +26,7 @@ namespace MobileNPC.iOS
             Xamarin.Calabash.Start();
 #endif
             global::Xamarin.Forms.Forms.Init();
+            global::Xamarin.Forms.FormsMaterial.Init();
             LoadApplication(new App());
 
             return base.FinishedLaunching(app, options);
