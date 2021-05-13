@@ -16,5 +16,7 @@
     <PackageReference Include="ReactiveUI.XamForms" Version="13.3.2" />
     <PackageReference Include="ReactiveUI.Fody" Version="13.3.2" />
     <PackageReference Include="ReactiveUI.Events.XamForms" Version="13.3.2" />
+    <PackageReference Include="Microsoft.AppCenter.Crashes" Version="4.2.0" />
+    <PackageReference Include="Microsoft.AppCenter.Analytics" Version="4.2.0" />
   </ItemGroup>
 </Project>
