@@ -1,4 +1,4 @@
-﻿namespace MobileNPC.Models
+﻿namespace MobileNPC.Core.Models
 {
     using System.Collections.Generic;
     public class Product

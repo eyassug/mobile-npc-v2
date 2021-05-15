@@ -1,4 +1,4 @@
-﻿namespace MobileNPC.Services
+﻿namespace MobileNPC.Core.Services
 {
     using System.Collections.Generic;
     using System.Threading.Tasks;

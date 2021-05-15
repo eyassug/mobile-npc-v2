@@ -99,6 +99,10 @@
       <Project>{D8E7F97D-8875-4259-9170-5EC02077DFDF}</Project>
       <Name>MobileNPC</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MobileNPC.Core\MobileNPC.Core.csproj">
+      <Project>{F19CFAF3-53BF-4F09-A1CC-824E2FC8FD56}</Project>
+      <Name>MobileNPC.Core</Name>
+    </ProjectReference>
   </ItemGroup>
  <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

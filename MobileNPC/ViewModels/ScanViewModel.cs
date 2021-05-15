@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
-using MobileNPC.Services;
+using MobileNPC.Core.Services;
 using System;
 
 namespace MobileNPC.ViewModels
