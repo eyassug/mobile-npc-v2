@@ -18,6 +18,7 @@
     <PackageReference Include="ReactiveUI.Events.XamForms" Version="13.3.2" />
     <PackageReference Include="Microsoft.AppCenter.Crashes" Version="4.2.0" />
     <PackageReference Include="Microsoft.AppCenter.Analytics" Version="4.2.0" />
+    <PackageReference Include="ZXing.Net.Mobile.Forms" Version="2.4.1" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MobileNPC.Core\MobileNPC.Core.csproj" />
