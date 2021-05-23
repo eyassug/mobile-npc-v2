@@ -6,6 +6,10 @@ using MobileNPC.Views;
 using Microsoft.AppCenter;
 using Microsoft.AppCenter.Analytics;
 using Microsoft.AppCenter.Crashes;
+using ReactiveUI;
+using BarcodeScanner;
+using Rg.Plugins.Popup.Services;
+using Rg.Plugins.Popup.Contracts;
 
 namespace MobileNPC
 {
@@ -16,8 +20,8 @@ namespace MobileNPC
         {
             InitializeComponent();
 
-            DependencyService.Register<MockDataStore>();
-            MainPage = new MainPage();
+            var bootstrapper = new AppBootstrapper();
+            MainPage = bootstrapper.CreateMainPage();
         }
 
         protected override void OnStart()
