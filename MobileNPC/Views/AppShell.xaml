@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<rx:ReactiveTabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:rx="clr-namespace:ReactiveUI.XamForms;assembly=ReactiveUI.XamForms"
+            x:Class="MobileNPC.Views.AppShell"
+            xmlns:views="clr-namespace:MobileNPC.Views"
+            xmlns:vm="clr-namespace:MobileNPC.ViewModels"
+            x:TypeArguments="vm:AppShellViewModel">
+    <rx:ReactiveTabbedPage.Children>
+        <NavigationPage Title="Scan">
+            <x:Arguments>
+                <views:ScanPage x:Name="tabScan" />
+            </x:Arguments>
+            <NavigationPage.Icon>
+                <OnPlatform x:TypeArguments="FileImageSource">
+                    <On Platform="iOS" Value="tab_feed.png"/>
+                </OnPlatform>
+            </NavigationPage.Icon>
+        </NavigationPage>
+        
+        <NavigationPage Title="About">
+            <x:Arguments>
+                <views:AboutPage x:Name="tabAbout"/>
+            </x:Arguments>
+            <NavigationPage.Icon>
+                <OnPlatform x:TypeArguments="FileImageSource">
+                    <On Platform="iOS" Value="tab_about.png"/>
+                </OnPlatform>
+            </NavigationPage.Icon>
+        </NavigationPage>
+    </rx:ReactiveTabbedPage.Children>
+</rx:ReactiveTabbedPage>
