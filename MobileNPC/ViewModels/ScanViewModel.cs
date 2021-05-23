@@ -4,6 +4,8 @@ using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
 using MobileNPC.Core.Services;
 using System;
+using BarcodeScanner;
+using Splat;
 
 namespace MobileNPC.ViewModels
 {
@@ -12,42 +14,46 @@ namespace MobileNPC.ViewModels
         private readonly Interaction<string, Unit> notFoundInteration;
         private readonly IProductService productService;
         private readonly IGS1ParserService gS1Parser;
-        public ScanViewModel(IProductService productService, IGS1ParserService gS1Parser, IScreen hostScreen = null) : base(hostScreen)
+        private readonly IBarcodeScannerService barcodeScannerService;
+        public ScanViewModel(IProductService productService = null, IGS1ParserService gS1Parser = null, IScreen hostScreen = null) : base(hostScreen)
         {
+            UrlPathSegment = "Scan QR";
             this.productService = productService;
             this.gS1Parser = gS1Parser;
+            this.barcodeScannerService = Locator.Current.GetService<IBarcodeScannerService>();
+            IsScanning = true;
+            IsAnalyzing = true;
+            
             notFoundInteration = new Interaction<string, Unit>();
-            ScanCommand = ReactiveCommand.CreateFromTask(async () =>
+            ScanCommand = ReactiveCommand.CreateFromTask(async () => 
             {
-                IsAnalyzing = false;
-                IsScanning = false;
 
-                string barcodeContent = string.Empty; // Get from Result.Text
-                var identifier = this.gS1Parser.GetGTIN(barcodeContent);
-                var product = await this.productService.GetProductAsync(identifier);
-                if(product != null)
+                var result = await barcodeScannerService.ReadBarcodeAsync();
+                if(result == null)
                 {
-                    HostScreen.Router
-                               .Navigate
-                               .Execute(new ProductViewModel(product))
-                               .Subscribe();
+                    HostScreen.Router.Navigate.Execute(new AboutViewModel()).Subscribe();
                 }
-                else
-                    _ = ProductNotFoundInteraction.Handle(barcodeContent);
 
-                IsAnalyzing = true;
-                IsScanning = true;
+            });
+            ToggleTorchCommand = ReactiveCommand.Create(() =>
+            {
+                if (!IsScanning)
+                    IsScanning = true;
+                IsTorchOn = !IsTorchOn;
             });
 
         }
 
         [Reactive]
-        public string Result { get; set; }
+        public ZXing.Result Result { get; set; }
         [Reactive]
         public bool IsScanning { get; set; }
         [Reactive]
         public bool IsAnalyzing { get; set; }
+        [Reactive]
+        public bool IsTorchOn { get; set; }
         public Interaction<string, Unit> ProductNotFoundInteraction => notFoundInteration;
         public ReactiveCommand<Unit, Unit> ScanCommand { get; private set; }
+        public ReactiveCommand<Unit, Unit> ToggleTorchCommand { get; private set; }
     }
 }
