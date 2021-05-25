@@ -29,6 +29,7 @@
             dependencyResolver.Register(() => new ScanPage(), typeof(IViewFor<ScanViewModel>));
             dependencyResolver.Register(() => new AppShell(), typeof(IViewFor<AppShellViewModel>));
             dependencyResolver.Register(() => new AboutPage(), typeof(IViewFor<AboutViewModel>));
+            dependencyResolver.Register(() => new ProductDetailPage(), typeof(IViewFor<ProductDetailViewModel>));
         }
 
         public Page CreateMainPage()

@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<rx:ReactiveContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:rx="clr-namespace:ReactiveUI.XamForms;assembly=ReactiveUI.XamForms"
+    xmlns:zxing="clr-namespace:ZXing.Net.Mobile.Forms;assembly=ZXing.Net.Mobile.Forms"
+    xmlns:vm="clr-namespace:MobileNPC.ViewModels"
+    x:Class="MobileNPC.Views.ProductDetailPage"
+    x:TypeArguments="vm:ProductDetailViewModel"
+    Visual="Material">
+    <StackLayout Spacing="20" Padding="15">
+        <Label Text="Brand Name:" FontSize="Small" />
+        <Label x:Name="lblBrand" d:Text="Item name" FontSize="Medium" />
+        <Label Text="GTIN:" FontSize="Small" />
+        <Label x:Name="lblGTIN" d:Text="Item description" FontSize="Medium" />
+        <Label Text="Functional Name" FontSize="Small" />
+        <Label x:Name="lblFunctionalName" d:Text="Functional Name" FontSize="Medium" />
+        <Label Text="Manufacturer" FontSize="Small" />
+        <Label x:Name="lblManufacturer" d:Text="Manufacturer" FontSize="Medium" />
+        <Label Text="Images" FontSize="Small" />
+        <Image x:Name="imgImage"  />
+    </StackLayout>
+    
+</rx:ReactiveContentPage>
