@@ -14,7 +14,7 @@ namespace MobileNPC.ViewModels
         public AboutViewModel(IScreen hostScreen = null): base(hostScreen)
         {
             _barcodeScanner = new Services.GS1BarcodeScannerService();
-            Title = "About";
+            UrlPathSegment = "About";
             OpenWebCommand = new Command(async () =>
             {
                 var result = await _barcodeScanner.ReadBarcodeAsync();

@@ -31,9 +31,10 @@ namespace MobileNPC.ViewModels
                 var result = await barcodeScannerService.ReadBarcodeAsync();
                 if(result == null)
                 {
-                    HostScreen.Router.Navigate.Execute(new AboutViewModel()).Subscribe();
+                    HostScreen.Router.Navigate.Execute(new ProductDetailViewModel("1".PadLeft(14, '0'))).Subscribe();
                 }
-
+                else
+                    HostScreen.Router.Navigate.Execute(new ProductDetailViewModel(result.PadLeft(14, '0'))).Subscribe();
             });
             ToggleTorchCommand = ReactiveCommand.Create(() =>
             {

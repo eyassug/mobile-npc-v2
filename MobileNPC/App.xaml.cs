@@ -10,6 +10,7 @@ using ReactiveUI;
 using BarcodeScanner;
 using Rg.Plugins.Popup.Services;
 using Rg.Plugins.Popup.Contracts;
+using AP.MobileToolkit.Fonts;
 
 namespace MobileNPC
 {
@@ -18,6 +19,10 @@ namespace MobileNPC
 
         public App()
         {
+            FontRegistry.RegisterFonts(FontAwesomeBrands.Font,
+                                       FontAwesomeRegular.Font,
+                                       FontAwesomeSolid.Font);
+
             InitializeComponent();
 
             var bootstrapper = new AppBootstrapper();

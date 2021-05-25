@@ -14,6 +14,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{FC7F5AA3-9577-4B58-9A89-CC20EC522E33}"
 	ProjectSection(SolutionItems) = preProject
 		README.md = README.md
+		NuGet.config = NuGet.config
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MobileNPC.Core", "MobileNPC.Core\MobileNPC.Core.csproj", "{F19CFAF3-53BF-4F09-A1CC-824E2FC8FD56}"
