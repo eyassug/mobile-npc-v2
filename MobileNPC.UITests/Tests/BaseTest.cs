@@ -11,8 +11,8 @@ namespace MobileNPC.UITests
         protected IApp app;
         protected Platform platform;
 
-        protected ItemsPage ItemsPage;
-        protected NewItemPage NewItemPage;
+        //protected ItemsPage ItemsPage;
+        //protected NewItemPage NewItemPage;
 
         protected BaseTest(Platform platform)
         {
@@ -25,8 +25,8 @@ namespace MobileNPC.UITests
             app = AppInitializer.StartApp(platform);
             app.Screenshot("App Initialized");
 
-            ItemsPage = new ItemsPage(app, platform);
-            NewItemPage = new NewItemPage(app, platform);
+            //ItemsPage = new ItemsPage(app, platform);
+            //NewItemPage = new NewItemPage(app, platform);
         }
     }
 }

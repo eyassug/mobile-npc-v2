@@ -13,7 +13,7 @@ namespace MobileNPC.UITests
         {
             base.BeforeEachTest();
 
-            ItemsPage.WaitForPageToLoad();
+            //ItemsPage.WaitForPageToLoad();
         }
 
         [Test]
@@ -24,13 +24,13 @@ namespace MobileNPC.UITests
             const string itemDescription = "Item Description";
 
             //Act
-            ItemsPage.TapAddToolbarButton();
-            NewItemPage.EnterItemName(itemName);
-            NewItemPage.EnterItemDescription(itemDescription);
-            NewItemPage.TapSaveToolbarButton();
+            //ItemsPage.TapAddToolbarButton();
+            //NewItemPage.EnterItemName(itemName);
+            //NewItemPage.EnterItemDescription(itemDescription);
+            //NewItemPage.TapSaveToolbarButton();
 
             //Assert
-            Assert.IsTrue(ItemsPage.IsPageVisible);
+            //Assert.IsTrue(ItemsPage.IsPageVisible);
             Assert.IsTrue(app.Query(itemName).Length > 0);
         }
 
