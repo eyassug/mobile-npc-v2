@@ -15,6 +15,8 @@
     <PackageReference Include="AP.MobileToolkit.Forms.Fonts.FontAwesomeFree.Brands" Version="3.0.0.1540-pre" />
     <PackageReference Include="AP.MobileToolkit.Forms.Fonts.FontAwesomeFree.Regular" Version="3.0.0.1540-pre" />
     <PackageReference Include="AP.MobileToolkit.Forms.Fonts.FontAwesomeFree.solid" Version="3.0.0.1540-pre" />
+    <PackageReference Include="sextant" Version="2.12.4" />
+    <PackageReference Include="sextant.xamforms" Version="2.12.4" />
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />  
     <PackageReference Include="Xamarin.Essentials" Version="1.6.1" />
     <PackageReference Include="ReactiveUI.XamForms" Version="13.3.2" />

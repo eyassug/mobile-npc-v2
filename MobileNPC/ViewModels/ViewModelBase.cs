@@ -1,22 +1,28 @@
 ﻿using System;
+using System.Reactive;
 using System.Reactive.Disposables;
 using System.Reactive.Linq;
 using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
+using Sextant;
 using Splat;
 
 namespace MobileNPC.ViewModels
 {
-    public abstract class ViewModelBase : ReactiveObject, IRoutableViewModel, IActivatableViewModel, IDisposable
+    public abstract class ViewModelBase : ReactiveObject, IViewModel, IRoutableViewModel, IActivatableViewModel, IDisposable, INavigable
     {
         protected readonly ViewModelActivator viewModelActivator = new ViewModelActivator();
+        protected readonly IViewStackService ViewStackService;
 
-
-        public ViewModelBase(IScreen hostScreen = null)
+        public ViewModelBase(IScreen hostScreen = null, IViewStackService viewStackService = null)
         {
-            HostScreen = hostScreen ?? Locator.Current.GetService<IScreen>();
-            Disposables = new CompositeDisposable();
+            UrlPathSegment = nameof(ViewModelBase);
+            //HostScreen = hostScreen ?? Locator.Current.GetService<IScreen>();
 
+            ViewStackService = viewStackService ?? Locator.Current.GetService<IViewStackService>();
+            NavigationService = ViewStackService;
+            ParameterNavigationService = Locator.Current.GetService<IParameterViewStackService>();
+            Disposables = new CompositeDisposable();
             // Set IsBusy to true while BusyCounter > 0 (handling parallelism)
             this.WhenAnyValue(x => x.BusyCounter)
                 .Select(busyCounter => busyCounter > 0)
@@ -25,9 +31,16 @@ namespace MobileNPC.ViewModels
                 .DisposeWith(Disposables);
         }
 
+        public ViewModelBase(IViewStackService viewStackService) : this(null, viewStackService: viewStackService)
+        {
+
+        }
+
 
         public string UrlPathSegment { get; protected set; }
         public IScreen HostScreen { get; protected set; }
+        public IParameterViewStackService ParameterNavigationService { get; protected set; }
+        public IViewStackService NavigationService { get; }
         public ViewModelActivator Activator { get => viewModelActivator; }
         protected CompositeDisposable Disposables { get; private set; }
 
@@ -39,6 +52,9 @@ namespace MobileNPC.ViewModels
         public bool IsBusy { get; }
         [Reactive]
         protected int BusyCounter { get; set; }
+
+        public string Id => UrlPathSegment;
+
 
         protected virtual void HandleIsBusy(bool isBusy)
         {
@@ -59,5 +75,11 @@ namespace MobileNPC.ViewModels
             Disposables.Dispose();
             Disposables = null;
         }
+
+        public virtual IObservable<Unit> WhenNavigatedFrom(INavigationParameter parameter) => Observable.Return(Unit.Default);
+
+        public virtual IObservable<Unit> WhenNavigatedTo(INavigationParameter parameter) => Observable.Return(Unit.Default);
+
+        public virtual IObservable<Unit> WhenNavigatingTo(INavigationParameter parameter) => Observable.Return(Unit.Default);
     }
 }

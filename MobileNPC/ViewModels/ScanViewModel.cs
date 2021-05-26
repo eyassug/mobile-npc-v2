@@ -6,6 +6,7 @@ using MobileNPC.Core.Services;
 using System;
 using BarcodeScanner;
 using Splat;
+using Sextant;
 
 namespace MobileNPC.ViewModels
 {
@@ -15,12 +16,10 @@ namespace MobileNPC.ViewModels
         private readonly IProductService productService;
         private readonly IGS1ParserService gS1Parser;
         private readonly IBarcodeScannerService barcodeScannerService;
-        public ScanViewModel(IProductService productService = null, IGS1ParserService gS1Parser = null, IScreen hostScreen = null) : base(hostScreen)
+        public ScanViewModel(IViewStackService viewStackService = null) : base(viewStackService)
         {
             UrlPathSegment = "Scan QR";
-            this.productService = productService;
-            this.gS1Parser = gS1Parser;
-            this.barcodeScannerService = Locator.Current.GetService<IBarcodeScannerService>();
+            barcodeScannerService = Locator.Current.GetService<IBarcodeScannerService>();
             IsScanning = true;
             IsAnalyzing = true;
             
@@ -31,10 +30,10 @@ namespace MobileNPC.ViewModels
                 var result = await barcodeScannerService.ReadBarcodeAsync();
                 if(result == null)
                 {
-                    HostScreen.Router.Navigate.Execute(new ProductDetailViewModel("1".PadLeft(14, '0'))).Subscribe();
+                    NavigationService.PushPage(new ProductDetailViewModel());
                 }
                 else
-                    HostScreen.Router.Navigate.Execute(new ProductDetailViewModel(result.PadLeft(14, '0'))).Subscribe();
+                    NavigationService.PushPage(new ProductDetailViewModel());
             });
             ToggleTorchCommand = ReactiveCommand.Create(() =>
             {

@@ -9,17 +9,18 @@
             xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
             android:TabbedPage.ToolbarPlacement="Bottom"
             x:TypeArguments="vm:AppShellViewModel">
-    <rx:ReactiveTabbedPage.Children>
+    <!--<rx:ReactiveTabbedPage.Children>
         <NavigationPage Title="Scan" IconImageSource="{FontImage Glyph={ap:Icon 'fas fa-barcode'}, Size=25}">
             <x:Arguments>
                 <views:ScanPage x:Name="tabScan" />
             </x:Arguments>
         </NavigationPage>
-        
+        <views:ScanPage x:Name="tabScan" />
+        <views:AboutPage x:Name="tabAbout" />
         <NavigationPage Title="About"  IconImageSource="{FontImage Glyph={ap:Icon 'far fa-user'}, Size=25}">
             <x:Arguments>
                 <views:AboutPage x:Name="tabAbout"/>
             </x:Arguments>
         </NavigationPage>
-    </rx:ReactiveTabbedPage.Children>
+    </rx:ReactiveTabbedPage.Children>-->
 </rx:ReactiveTabbedPage>

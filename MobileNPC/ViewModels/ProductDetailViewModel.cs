@@ -2,11 +2,13 @@
 {
     using ReactiveUI;
     using ReactiveUI.Fody.Helpers;
+    using Sextant;
 
     public class ProductDetailViewModel : ViewModelBase
     {
-        public ProductDetailViewModel(string gtin, IScreen hostScreen = null) : base(hostScreen)
+        public ProductDetailViewModel(IScreen hostScreen = null, IViewStackService viewStackService = null) : base(viewStackService)
         {
+            string gtin = "XXX";
             UrlPathSegment = gtin;
             Identifier = gtin;
             Name = "Amoxicillin";
