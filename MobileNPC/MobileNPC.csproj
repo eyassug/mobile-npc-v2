@@ -25,6 +25,7 @@
     <PackageReference Include="ZXing.Net.Mobile.Forms" Version="2.4.1" />
     <PackageReference Include="BarcodeScanning.Service" Version="1.1.0.286" />
     <PackageReference Include="Rg.Plugins.Popup" Version="1.1.5.188" />
+    <PackageReference Include="Sextant.XamForms" Version="2.12.4" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MobileNPC.Core\MobileNPC.Core.csproj" />
