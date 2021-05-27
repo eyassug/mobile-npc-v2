@@ -1,15 +1,22 @@
 ﻿namespace MobileNPC.ViewModels
 {
     using MobileNPC.Core.Models;
-    public class ProductViewModel : ViewModelBase
-    {
-        private readonly Product product;
+    using ReactiveUI.Fody.Helpers;
+    using Sextant;
 
-        public ProductViewModel(Product product)
+    public class ProductViewModel : BaseViewModel, IViewModel
+    {
+        public override string Id => "Amoxicilin";
+
+        public ProductViewModel(IViewStackService viewStackService) : base(viewStackService)
         {
-            this.product = product ?? throw new System.ArgumentNullException(nameof(product));
+            Identifier = "1".PadLeft(14);
+            Name = Id;
         }
 
-        public Product Product => product;
+        [Reactive]
+        public string Identifier { get; set; }
+        [Reactive]
+        public string Name { get; set; }
     }
 }

@@ -2,7 +2,7 @@
 using ReactiveUI.XamForms;
 namespace MobileNPC.Views
 {
-    public partial class ProductDetailPage : ReactiveContentPage<ViewModels.ProductDetailViewModel>
+    public partial class ProductDetailPage : ReactiveContentPage<ViewModels.ProductViewModel>
     {
         public ProductDetailPage()
         {

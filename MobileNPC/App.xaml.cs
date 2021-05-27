@@ -11,6 +11,11 @@ using BarcodeScanner;
 using Rg.Plugins.Popup.Services;
 using Rg.Plugins.Popup.Contracts;
 using AP.MobileToolkit.Fonts;
+using static Sextant.Sextant;
+using Sextant.XamForms;
+using Splat;
+using MobileNPC.ViewModels;
+using Sextant;
 
 namespace MobileNPC
 {
@@ -25,8 +30,25 @@ namespace MobileNPC
 
             InitializeComponent();
 
-            var bootstrapper = new AppBootstrapper();
-            MainPage = bootstrapper.CreateMainPage();
+            RxApp.DefaultExceptionHandler = new SextantDefaultExceptionHandler();
+
+            Instance.InitializeForms();
+
+            Locator
+                .CurrentMutable
+                .RegisterView<TabPage, TabViewModel>()
+                .RegisterView<HomePage, HomeViewModel>()
+                .RegisterView<MainPage, MainViewModel>()
+                .RegisterView<ProductDetailPage, ProductViewModel>()
+                .RegisterNavigationView(() => new AppNavigationView());
+
+            Locator
+                .Current
+                .GetService<IViewStackService>()
+                .PushPage(new MainViewModel(null), null, true, false)
+                .Subscribe();
+
+            MainPage = Locator.Current.GetNavigationView();
         }
 
         protected override void OnStart()
