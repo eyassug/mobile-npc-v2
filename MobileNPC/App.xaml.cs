@@ -1,21 +1,8 @@
-﻿using System;
-using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
-using MobileNPC.Services;
-using MobileNPC.Views;
+﻿using Xamarin.Forms;
 using Microsoft.AppCenter;
 using Microsoft.AppCenter.Analytics;
 using Microsoft.AppCenter.Crashes;
-using ReactiveUI;
-using BarcodeScanner;
-using Rg.Plugins.Popup.Services;
-using Rg.Plugins.Popup.Contracts;
 using AP.MobileToolkit.Fonts;
-using static Sextant.Sextant;
-using Sextant.XamForms;
-using Splat;
-using MobileNPC.ViewModels;
-using Sextant;
 
 namespace MobileNPC
 {
@@ -30,25 +17,8 @@ namespace MobileNPC
 
             InitializeComponent();
 
-            RxApp.DefaultExceptionHandler = new SextantDefaultExceptionHandler();
-
-            Instance.InitializeForms();
-
-            Locator
-                .CurrentMutable
-                .RegisterView<TabPage, TabViewModel>()
-                .RegisterView<HomePage, HomeViewModel>()
-                .RegisterView<MainPage, MainViewModel>()
-                .RegisterView<ProductDetailPage, ProductViewModel>()
-                .RegisterNavigationView(() => new AppNavigationView());
-
-            Locator
-                .Current
-                .GetService<IViewStackService>()
-                .PushPage(new MainViewModel(null), null, true, false)
-                .Subscribe();
-
-            MainPage = Locator.Current.GetNavigationView();
+            var bootstrapper = new SextantAppBootstrapper();
+            MainPage = bootstrapper.CreateMainPage();
         }
 
         protected override void OnStart()
