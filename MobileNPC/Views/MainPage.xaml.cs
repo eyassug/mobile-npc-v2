@@ -39,13 +39,13 @@ namespace MobileNPC.Views
             var vLocator = Locator.Current.GetService<IViewLocator>();
 
             var navigationView = new Sextant.XamForms.NavigationView(mScheduler, bgScheduler, vLocator);
-            var viewStackService = new ViewStackService(navigationView);
+            var viewStackService = new ParameterViewStackService(navigationView);
             var model = createViewModelFunc(viewStackService);
 
             navigationView.Title = model.TabTitle;
             navigationView.IconImageSource = model.TabIcon;
 
-            navigationView.PushPage(model as ViewModels.BaseViewModel, null, true, false).Subscribe();
+            navigationView.PushPage(model, null, true, false).Subscribe();
             return navigationView;
         }
     }

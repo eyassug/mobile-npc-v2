@@ -12,7 +12,7 @@
     public class HomeViewModel : BaseViewModel, ITabViewModel, IViewModel
     {
         public override string Id => nameof(HomeViewModel);
-
+        readonly BarcodeScanner.IBarcodeScannerService barcodeScannerService = new Services.GS1BarcodeScannerService();
 
         public string TabTitle => Id;
 
@@ -20,10 +20,17 @@
 
         public HomeViewModel(IViewStackService viewStackService) : base(viewStackService)
         {
-            OpenModal = ReactiveCommand
-                .CreateFromObservable(() =>
-                    ViewStackService.PushModal(new ProductViewModel(ViewStackService)),
-                    outputScheduler: RxApp.MainThreadScheduler);
+            OpenModal = ReactiveCommand.CreateFromTask(async () =>
+            {
+
+                var result = await barcodeScannerService.ReadBarcodeAsync();
+                if (result != null)
+                {
+                    await ViewStackService.PushPage(new ProductViewModel(ViewStackService));
+                }
+                else
+                    await NavigationService.PushPage(new ProductViewModel(ViewStackService), new NavigationParameter { { "parameter", "gtin" } });
+            }, outputScheduler: RxApp.MainThreadScheduler);
 
             PushPage = ReactiveCommand
                 .CreateFromObservable(() =>
