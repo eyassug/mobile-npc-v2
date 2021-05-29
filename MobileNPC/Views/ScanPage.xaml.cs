@@ -4,6 +4,7 @@ using ReactiveUI;
 using MobileNPC.ViewModels;
 using ReactiveUI.XamForms;
 using System.Reactive.Disposables;
+using System.Reflection;
 
 namespace MobileNPC.Views
 {
@@ -12,11 +13,11 @@ namespace MobileNPC.Views
         public ScanPage()
         {
             InitializeComponent();
+            ImageBarcodeScanner.Source = ImageSource.FromResource("MobileNPC.barcode-scanner.png", typeof(App).Assembly);
             NavigationPage.SetHasNavigationBar(this, false);
-            ViewModel = new ScanViewModel();
             this.WhenActivated(disposables =>
             {
-                this.BindCommand(ViewModel, x => x.ScanCommand, x => x.btnScan)
+                this.BindCommand(ViewModel, x => x.ScanCommand, x => x.ButtonScan)
                     .DisposeWith(disposables);
             });
         }

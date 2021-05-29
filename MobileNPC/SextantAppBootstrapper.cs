@@ -32,8 +32,9 @@
                 .RegisterView<HomePage, HomeViewModel>()
                 .RegisterView<MainPage, MainViewModel>()
                 .RegisterView<ProductDetailPage, ProductViewModel>()
+                .RegisterView<ScanPage, ScanViewModel>()
                 .RegisterNavigationView(() => new AppNavigationView());
-
+            dependencyResolver.RegisterConstant(new Services.GS1BarcodeScannerService(), typeof(BarcodeScanner.IBarcodeScannerService));
             
         }
 

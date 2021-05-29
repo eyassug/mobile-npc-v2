@@ -30,4 +30,12 @@
   <ItemGroup>
     <ProjectReference Include="..\MobileNPC.Core\MobileNPC.Core.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <None Remove="barcode-scanner.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="barcode-scanner.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
 </Project>
