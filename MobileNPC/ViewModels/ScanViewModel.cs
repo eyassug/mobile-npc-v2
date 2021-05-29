@@ -6,55 +6,39 @@ using MobileNPC.Core.Services;
 using System;
 using BarcodeScanner;
 using Splat;
+using Sextant;
+using System.Reactive.Linq;
+using Xamarin.Forms;
+using System.Reactive.Disposables;
 
 namespace MobileNPC.ViewModels
 {
-    public class ScanViewModel : ViewModelBase
+    public class ScanViewModel : BaseViewModel, ITabViewModel 
     {
         private readonly Interaction<string, Unit> notFoundInteration;
-        private readonly IProductService productService;
-        private readonly IGS1ParserService gS1Parser;
+        public override string Id => "Scan Barcode";
         private readonly IBarcodeScannerService barcodeScannerService;
-        public ScanViewModel(IProductService productService = null, IGS1ParserService gS1Parser = null, IScreen hostScreen = null) : base(hostScreen)
-        {
-            UrlPathSegment = "Scan QR";
-            this.productService = productService;
-            this.gS1Parser = gS1Parser;
-            this.barcodeScannerService = Locator.Current.GetService<IBarcodeScannerService>();
-            IsScanning = true;
-            IsAnalyzing = true;
-            
-            notFoundInteration = new Interaction<string, Unit>();
-            ScanCommand = ReactiveCommand.CreateFromTask(async () => 
-            {
 
-                var result = await barcodeScannerService.ReadBarcodeAsync();
-                if(result == null)
-                {
-                    HostScreen.Router.Navigate.Execute(new ProductDetailViewModel("1".PadLeft(14, '0'))).Subscribe();
-                }
-                else
-                    HostScreen.Router.Navigate.Execute(new ProductDetailViewModel(result.PadLeft(14, '0'))).Subscribe();
-            });
-            ToggleTorchCommand = ReactiveCommand.Create(() =>
-            {
-                if (!IsScanning)
-                    IsScanning = true;
-                IsTorchOn = !IsTorchOn;
-            });
+        public string TabTitle => Id;
+        public ImageSource TabIcon => "";
 
-        }
-
-        [Reactive]
-        public ZXing.Result Result { get; set; }
-        [Reactive]
-        public bool IsScanning { get; set; }
-        [Reactive]
-        public bool IsAnalyzing { get; set; }
-        [Reactive]
-        public bool IsTorchOn { get; set; }
         public Interaction<string, Unit> ProductNotFoundInteraction => notFoundInteration;
         public ReactiveCommand<Unit, Unit> ScanCommand { get; private set; }
-        public ReactiveCommand<Unit, Unit> ToggleTorchCommand { get; private set; }
+
+        public ScanViewModel(IViewStackService viewStackService) : base(viewStackService)
+        {
+            barcodeScannerService = Locator.Current.GetService<IBarcodeScannerService>();
+
+            notFoundInteration = new Interaction<string, Unit>();
+            ScanCommand = ReactiveCommand.CreateFromTask(async () =>
+            {
+
+                var result = await barcodeScannerService.ReadBarcodeAsync() ?? "1".PadLeft('0');
+                if (result != null)
+                    NavigationService.PushPage(new ProductViewModel(ViewStackService), new NavigationParameter { { "parameter", "gtin" } })
+                        .Subscribe()
+                        .DisposeWith(Disposables);
+            });
+        }
     }
 }

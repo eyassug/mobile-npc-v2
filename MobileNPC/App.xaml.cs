@@ -1,15 +1,7 @@
-﻿using System;
-using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
-using MobileNPC.Services;
-using MobileNPC.Views;
+﻿using Xamarin.Forms;
 using Microsoft.AppCenter;
 using Microsoft.AppCenter.Analytics;
 using Microsoft.AppCenter.Crashes;
-using ReactiveUI;
-using BarcodeScanner;
-using Rg.Plugins.Popup.Services;
-using Rg.Plugins.Popup.Contracts;
 using AP.MobileToolkit.Fonts;
 
 namespace MobileNPC
@@ -25,7 +17,7 @@ namespace MobileNPC
 
             InitializeComponent();
 
-            var bootstrapper = new AppBootstrapper();
+            var bootstrapper = new SextantAppBootstrapper();
             MainPage = bootstrapper.CreateMainPage();
         }
 

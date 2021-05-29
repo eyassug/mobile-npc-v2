@@ -3,53 +3,43 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:rx="clr-namespace:ReactiveUI.XamForms;assembly=ReactiveUI.XamForms"
-    xmlns:zxing="clr-namespace:ZXing.Net.Mobile.Forms;assembly=ZXing.Net.Mobile.Forms"
     xmlns:vm="clr-namespace:MobileNPC.ViewModels"
     x:Class="MobileNPC.Views.ScanPage"
     x:TypeArguments="vm:ScanViewModel"
     Visual="Material">
-    <rx:ReactiveContentPage.Resources>
-        <ResourceDictionary>
-            <Color x:Key="Primary">#2196F3</Color>
-            <Color x:Key="Accent">#96d1ff</Color>
-            <Color x:Key="LightTextColor">#999999</Color>
-        </ResourceDictionary>
-    </rx:ReactiveContentPage.Resources>
-    <Grid RowDefinitions="Auto, *">
-        <StackLayout BackgroundColor="{StaticResource Accent}" VerticalOptions="FillAndExpand" HorizontalOptions="Fill">
+    <FlexLayout Direction="Column"
+                AlignItems="Center"
+                JustifyContent="Start" Margin="20,10">
+        <Label FontSize="22" HorizontalTextAlignment="Center">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <FormattedString.Spans>
+                                <Span Text="Welcome to the National Product Catalog of Country Name" FontAttributes="Bold" FontSize="18" />
+                            </FormattedString.Spans>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+        <!-- Body -->
+        <FlexLayout Direction="Column" FlexLayout.Grow="1" AlignItems="Center" JustifyContent="Center">
+            
+            <Image x:Name="ImageBarcodeScanner" Scale="10" />
+            <Grid RowDefinitions="Auto, *">
+        <StackLayout  VerticalOptions="FillAndExpand" HorizontalOptions="Fill">
             <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
                 <ContentView Padding="0,40,0,40" VerticalOptions="FillAndExpand">
-                    <Image Source="xamarin_logo.png" VerticalOptions="Center" HeightRequest="64" />
+                    <!--<Image Source="xamarin_logo.png" VerticalOptions="Center" HeightRequest="64" />-->
                 </ContentView>
             </StackLayout>
         </StackLayout>
         <ScrollView Grid.Row="1">
             <StackLayout Orientation="Vertical" Padding="16,40,16,40" Spacing="10">
-                <Label FontSize="22">
-                    <Label.FormattedText>
-                        <FormattedString>
-                            <FormattedString.Spans>
-                                <Span Text="National Product Catalog" FontAttributes="Bold" FontSize="22" />
-                                <Span Text=" " />
-                                <Span Text="1.0" ForegroundColor="{StaticResource LightTextColor}" />
-                            </FormattedString.Spans>
-                        </FormattedString>
-                    </Label.FormattedText>
-                </Label>
-                <Label>
-                    <Label.FormattedText>
-                        <FormattedString>
-                            <FormattedString.Spans>
-                                <Span Text="This app scans GS1 barcodes for health  " />
-                                <Span Text="commodities and displays product information " />
-                                <Span Text="from the National Product Catalog of" />
-                                <Span Text=" Country Name" FontAttributes="Bold" />
-                                <Span Text="." />
-                            </FormattedString.Spans>
-                        </FormattedString>
-                    </Label.FormattedText>
-                </Label>
-                <Label>
+                
+                
+                <Button x:Name="ButtonScan"
+                        Margin="0,10,0,0" Text="Start Scan"
+                        BackgroundColor="{StaticResource PrimaryTextColor}"
+                        TextColor="White" />
+                <Label HorizontalTextAlignment="Center">
                     <Label.FormattedText>
                         <FormattedString>
                             <FormattedString.Spans>
@@ -63,12 +53,15 @@
                         </FormattedString>
                     </Label.FormattedText>
                 </Label>
-                <Button x:Name="btnScan" Command="{Binding ScanCommand}"
-                        Margin="0,10,0,0" Text="Start Scan"
-                        BackgroundColor="{StaticResource Primary}"
-                        TextColor="White" />
             </StackLayout>
         </ScrollView>
     </Grid>
+        </FlexLayout>
+        
+        <!--<Button x:Name="ButtonScan" Command="{Binding ScanCommand}"
+            Margin="50,50" Text="Start Scan"
+            TextColor="White" />-->
+
+    </FlexLayout>
 
 </rx:ReactiveContentPage>

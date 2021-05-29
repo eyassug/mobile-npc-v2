@@ -3,21 +3,27 @@ using System.Windows.Input;
 using BarcodeScanner;
 using ReactiveUI;
 using Rg.Plugins.Popup.Services;
+using Sextant;
+using Splat;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace MobileNPC.ViewModels
 {
-    public class AboutViewModel : ViewModelBase
+    public class AboutViewModel : BaseViewModel, ITabViewModel
     {
-        private IBarcodeScannerService _barcodeScanner { get; }
-        public AboutViewModel(IScreen hostScreen = null): base(hostScreen)
+        public override string Id => "About";
+        private IBarcodeScannerService BarcodeScanner { get; }
+        public string TabTitle => Id;
+
+        public ImageSource TabIcon => "";
+
+        public AboutViewModel(IViewStackService viewStackService = null): base(viewStackService)
         {
-            _barcodeScanner = new Services.GS1BarcodeScannerService();
-            UrlPathSegment = "About";
+            BarcodeScanner = Locator.Current.GetService<IBarcodeScannerService>();
             OpenWebCommand = new Command(async () =>
             {
-                var result = await _barcodeScanner.ReadBarcodeAsync();
+                var result = await BarcodeScanner.ReadBarcodeAsync();
             });
         }
 

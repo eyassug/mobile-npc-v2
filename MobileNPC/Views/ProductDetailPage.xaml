@@ -7,7 +7,7 @@
     xmlns:zxing="clr-namespace:ZXing.Net.Mobile.Forms;assembly=ZXing.Net.Mobile.Forms"
     xmlns:vm="clr-namespace:MobileNPC.ViewModels"
     x:Class="MobileNPC.Views.ProductDetailPage"
-    x:TypeArguments="vm:ProductDetailViewModel"
+    x:TypeArguments="vm:ProductViewModel"
     Visual="Material">
     <StackLayout Spacing="20" Padding="15">
         <Label Text="Brand Name:" FontSize="Small" />
