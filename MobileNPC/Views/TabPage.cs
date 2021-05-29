@@ -11,7 +11,6 @@
         {
             this.WhenActivated(disposable =>
             {
-                // Why do I need to add this here to make the VM WhenActivated Work?
             });
         }
     }

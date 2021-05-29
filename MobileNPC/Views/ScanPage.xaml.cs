@@ -14,7 +14,6 @@ namespace MobileNPC.Views
         {
             InitializeComponent();
             ImageBarcodeScanner.Source = ImageSource.FromResource("MobileNPC.barcode-scanner.png", typeof(App).Assembly);
-            NavigationPage.SetHasNavigationBar(this, false);
             this.WhenActivated(disposables =>
             {
                 this.BindCommand(ViewModel, x => x.ScanCommand, x => x.ButtonScan)

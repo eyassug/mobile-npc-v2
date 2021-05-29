@@ -22,7 +22,7 @@
             TabViewModels = new List<Func<IViewStackService, TabViewModel>>()
             {
                 (customViewStack) => new TabViewModel("Scan", "fas fa-barcode", customViewStack, () => new ScanViewModel(customViewStack)),
-                (customViewStack) => new TabViewModel("Red", "fas fa-user", customViewStack, () => new HomeViewModel(customViewStack)),
+                (customViewStack) => new TabViewModel("About", "fas fa-user", customViewStack, () => new AboutViewModel(customViewStack)),
             };
         }
     }

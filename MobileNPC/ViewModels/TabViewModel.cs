@@ -6,21 +6,34 @@
     using Xamarin.Forms;
     using System.Reactive.Disposables;
     using AP.MobileToolkit.Markup;
+    using System.Reactive;
+    using System.Diagnostics;
+    using System.Reactive.Linq;
 
     public class TabViewModel : BaseViewModel, ITabViewModel
     {
         public string TabTitle { get; }
         public ImageSource TabIcon { get; }
 
-        public TabViewModel(string tabTitle, string tabIcon, IViewStackService viewStackService, Func<IViewModel> pageCreate) : base(viewStackService)
+        private TabViewModel(string tabTitle, IViewStackService viewStackService, Func<IViewModel> pageCreate) : base(viewStackService)
         {
-            TabIcon = new FontImageSource().SetIcon(tabIcon);
             TabTitle = tabTitle;
-
-            this.WhenActivated(disposable =>
+            this.WhenActivated(disposables =>
             {
-                viewStackService.PushPage(pageCreate(), resetStack: true).Subscribe().DisposeWith(disposable);
+                viewStackService.PushPage(pageCreate(), resetStack: true).Subscribe().DisposeWith(disposables);
             });
+        }
+
+        public TabViewModel(string tabTitle, string tabIconFont, IViewStackService viewStackService, Func<IViewModel> pageCreate)
+            : this(tabTitle, viewStackService, pageCreate)
+        {
+            TabIcon = new FontImageSource().SetIcon(tabIconFont);
+        }
+
+        public TabViewModel(string tabTitle, ImageSource tabIconImage, IViewStackService viewStackService, Func<IViewModel> pageCreate)
+            : this(tabTitle, viewStackService, pageCreate)
+        {
+            TabIcon = tabIconImage;
         }
     }
 }

@@ -9,6 +9,7 @@ using Splat;
 using Sextant;
 using System.Reactive.Linq;
 using Xamarin.Forms;
+using System.Reactive.Disposables;
 
 namespace MobileNPC.ViewModels
 {
@@ -34,7 +35,9 @@ namespace MobileNPC.ViewModels
 
                 var result = await barcodeScannerService.ReadBarcodeAsync() ?? "1".PadLeft('0');
                 if (result != null)
-                    await NavigationService.PushPage(new ProductViewModel(ViewStackService), new NavigationParameter { { "parameter", "gtin" } });
+                    NavigationService.PushPage(new ProductViewModel(ViewStackService), new NavigationParameter { { "parameter", "gtin" } })
+                        .Subscribe()
+                        .DisposeWith(Disposables);
             });
         }
     }

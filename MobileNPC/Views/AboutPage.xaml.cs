@@ -10,8 +10,6 @@ namespace MobileNPC.Views
         public AboutPage()
         {
             InitializeComponent();
-            NavigationPage.SetHasNavigationBar(this, false);
-            ViewModel = new ViewModels.AboutViewModel();
         }
     }
 }
