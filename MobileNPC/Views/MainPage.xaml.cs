@@ -38,7 +38,7 @@ namespace MobileNPC.Views
             var mScheduler = RxApp.MainThreadScheduler;
             var vLocator = Locator.Current.GetService<IViewLocator>();
 
-            var navigationView = new Sextant.XamForms.NavigationView(mScheduler, bgScheduler, vLocator);
+            var navigationView = new AppNavigationView();
             var viewStackService = new ParameterViewStackService(navigationView);
             var model = createViewModelFunc(viewStackService);
 

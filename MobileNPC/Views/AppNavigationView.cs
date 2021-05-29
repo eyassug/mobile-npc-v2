@@ -10,8 +10,9 @@
         public AppNavigationView()
             : base(RxApp.MainThreadScheduler, RxApp.TaskpoolScheduler, ViewLocator.Current)
         {
-            this.BarBackgroundColor = Color.Blue;
-            this.BarTextColor = Color.White;
+            BackgroundColor = Color.White;
+            BarBackgroundColor = Color.Black;
+            BarTextColor = Color.White;
         }
 
         public object ViewModel { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
