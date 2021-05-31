@@ -13,7 +13,7 @@ namespace MobileNPC.Views
         public ScanPage()
         {
             InitializeComponent();
-            ImageBarcodeScanner.Source = ImageSource.FromResource("MobileNPC.barcode-scanner.png", typeof(App).Assembly);
+            //ImageBarcodeScanner.Source = ImageSource.FromResource("MobileNPC.barcode-scanner.png", typeof(App).Assembly);
             this.WhenActivated(disposables =>
             {
                 this.BindCommand(ViewModel, x => x.ScanCommand, x => x.ButtonScan)

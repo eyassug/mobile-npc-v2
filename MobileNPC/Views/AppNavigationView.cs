@@ -10,8 +10,7 @@
         public AppNavigationView()
             : base(RxApp.MainThreadScheduler, RxApp.TaskpoolScheduler, ViewLocator.Current)
         {
-            BackgroundColor = Color.White;
-            BarBackgroundColor = Color.Black;
+            BarBackgroundColor = Color.FromHex("#96d1ff");
             BarTextColor = Color.White;
         }
 

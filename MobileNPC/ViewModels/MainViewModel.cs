@@ -5,6 +5,7 @@
     using ReactiveUI;
     using System.Collections.Generic;
     using Sextant;
+    using Xamarin.Forms;
 
     public class MainViewModel : BaseViewModel
     {
@@ -22,7 +23,7 @@
             TabViewModels = new List<Func<IViewStackService, TabViewModel>>()
             {
                 (customViewStack) => new TabViewModel("Scan", "fas fa-barcode", customViewStack, () => new ScanViewModel(customViewStack)),
-                (customViewStack) => new TabViewModel("About", "fas fa-user", customViewStack, () => new AboutViewModel(customViewStack)),
+                (customViewStack) => new TabViewModel("About", ImageSource.FromResource("MobileNPC.Resources.tab_about.png"), customViewStack, () => new AboutViewModel(customViewStack)),
             };
         }
     }
