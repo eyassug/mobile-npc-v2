@@ -11,6 +11,7 @@
 
             <Color x:Key="PageBackgroundColor">White</Color>
             <Color x:Key="NavigationBarColor">#96d1ff</Color>
+            <Color x:Key="ButtonColor">#2196F3</Color>
             <Color x:Key="PrimaryColor">WhiteSmoke</Color>
             <Color x:Key="SecondaryColor">Black</Color>
             <Color x:Key="PrimaryTextColor">Black</Color>
