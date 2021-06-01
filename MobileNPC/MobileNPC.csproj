@@ -26,16 +26,27 @@
     <PackageReference Include="BarcodeScanning.Service" Version="1.1.0.286" />
     <PackageReference Include="Rg.Plugins.Popup" Version="1.1.5.188" />
     <PackageReference Include="Sextant.XamForms" Version="2.12.4" />
+    <PackageReference Include="Com.Airbnb.Xamarin.Forms.Lottie" Version="4.0.9" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MobileNPC.Core\MobileNPC.Core.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <None Remove="barcode-scanner.png" />
+    <None Remove="Resources\tab_about%403x.png" />
+    <None Remove="Resources\tab_about.png" />
+    <None Remove="Resources\barcode-scanner.png" />
+    <None Remove="Resources\scan-qr-code.json" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="barcode-scanner.png">
+    <EmbeddedResource Include="Resources\tab_about.png" />
+    <EmbeddedResource Include="Resources\barcode-scanner.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
+    <EmbeddedResource Include="Resources\scan-qr-code.json">
+      <LogicalName>scan-qr-code.json</LogicalName>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\" />
   </ItemGroup>
 </Project>

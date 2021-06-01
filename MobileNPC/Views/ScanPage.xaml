@@ -22,7 +22,6 @@
         <!-- Body -->
         <FlexLayout Direction="Column" FlexLayout.Grow="1" AlignItems="Center" JustifyContent="Center">
             
-            <Image x:Name="ImageBarcodeScanner" Scale="10" />
             <Grid RowDefinitions="Auto, *">
         <StackLayout  VerticalOptions="FillAndExpand" HorizontalOptions="Fill">
             <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">

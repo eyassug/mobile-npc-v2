@@ -1,6 +1,7 @@
 ﻿namespace MobileNPC
 {
     using System;
+    using MobileNPC.Core.Services;
     using MobileNPC.ViewModels;
     using MobileNPC.Views;
     using ReactiveUI;
@@ -27,6 +28,22 @@
         [Obsolete]
         void RegisterParts(IMutableDependencyResolver dependencyResolver)
         {
+#if DEBUG
+            dependencyResolver.RegisterConstant(new MockProductService(), typeof(IProductService));
+#else
+            var akeneoOptions = new Akeneo.AkeneoOptions
+            {
+                ApiEndpoint = new Uri(Configuration.AppConstants.AkeneoUrl),
+                ClientId = Configuration.AppConstants.ClientId,
+                ClientSecret = Configuration.AppConstants.ClientSecret,
+                UserName = Configuration.AppConstants.Username,
+                Password = Configuration.AppConstants.Password
+            };
+            dependencyResolver.RegisterConstant(new ProductService(akeneoOptions), typeof(IProductService));
+#endif
+
+            dependencyResolver.RegisterConstant(new GS1ParserService(), typeof(IGS1ParserService));
+
             dependencyResolver
                 .RegisterView<TabPage, TabViewModel>()
                 .RegisterView<HomePage, HomeViewModel>()
