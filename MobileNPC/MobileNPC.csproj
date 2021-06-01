@@ -36,15 +36,18 @@
     <None Remove="Resources\tab_about.png" />
     <None Remove="Resources\barcode-scanner.png" />
     <None Remove="Resources\scan-qr-code.json" />
+    <None Remove="Resources\icon.png" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\tab_about.png" />
-    <EmbeddedResource Include="Resources\barcode-scanner.png">
+    <EmbeddedResource Include="Resources\barcode_scanner.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <LogicalName>Resources.barcode_scanner.png</LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="Resources\scan-qr-code.json">
-      <LogicalName>scan-qr-code.json</LogicalName>
+    <EmbeddedResource Include="Resources\scan_qr_code.json">
+      <LogicalName>scan_qr_code.json</LogicalName>
     </EmbeddedResource>
+    <EmbeddedResource Include="Resources\icon.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
