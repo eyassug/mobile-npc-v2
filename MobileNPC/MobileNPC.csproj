@@ -47,7 +47,7 @@
     <EmbeddedResource Include="Resources\scan_qr_code.json">
       <LogicalName>scan_qr_code.json</LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="Resources\icon.png" />
+    <EmbeddedResource Include="Resources\npc_icon.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
