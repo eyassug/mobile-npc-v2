@@ -46,7 +46,6 @@
 
             dependencyResolver
                 .RegisterView<TabPage, TabViewModel>()
-                .RegisterView<HomePage, HomeViewModel>()
                 .RegisterView<MainPage, MainViewModel>()
                 .RegisterView<ProductDetailPage, ProductDetailViewModel>()
                 .RegisterView<ScanPage, ScanViewModel>()

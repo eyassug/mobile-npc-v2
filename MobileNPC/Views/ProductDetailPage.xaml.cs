@@ -9,9 +9,7 @@ namespace MobileNPC.Views
             InitializeComponent();
             this.WhenActivated(disposables =>
             {
-                this.Bind(ViewModel, x => x.Identifier, x => x.lblGTIN.Text);
-
-                this.Bind(ViewModel, x => x.Name, x => x.lblFunctionalName.Text);
+                this.Bind(ViewModel, x => x.Product, x => x.Product.ViewModel);
             });
         }
     }

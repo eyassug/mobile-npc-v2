@@ -16,10 +16,6 @@
         {
             Product = product ?? throw new ArgumentNullException(nameof(product));
             Identifier = Product.Identifier;
-            this.WhenActivated(disposables =>
-            {
-
-            });
         }
 
         [Reactive]
@@ -31,7 +27,7 @@
         [Reactive]
         public IList<AttributeViewModel> Attributes { get; set; }
 
-        public ViewModelActivator Activator => throw new NotImplementedException();
+        public ViewModelActivator Activator => new ViewModelActivator();
     }
 
     public class AttributeViewModel : ReactiveObject
