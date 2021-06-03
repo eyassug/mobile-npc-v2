@@ -1,10 +1,12 @@
-﻿using ReactiveUI;
+﻿using Xamarin.Forms;
 using ReactiveUI.XamForms;
+using ReactiveUI;
+
 namespace MobileNPC.Views
 {
-    public partial class ProductDetailPage : ReactiveContentPage<ViewModels.ProductDetailViewModel>
+    public partial class ProductView : ReactiveContentView<ViewModels.ProductViewModel>
     {
-        public ProductDetailPage()
+        public ProductView()
         {
             InitializeComponent();
             this.WhenActivated(disposables =>

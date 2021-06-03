@@ -1,37 +1,50 @@
 ﻿namespace MobileNPC.ViewModels
 {
     using System;
+    using System.Collections.Generic;
     using System.Diagnostics;
     using System.Reactive;
     using MobileNPC.Core.Models;
+    using ReactiveUI;
     using ReactiveUI.Fody.Helpers;
     using Sextant;
 
-    public class ProductViewModel : BaseViewModel, IViewModel
+    public class ProductViewModel : ReactiveObject, IActivatableViewModel
     {
-        public override string Id => "Amoxicilin";
-
-        public ProductViewModel(IViewStackService viewStackService) : base(viewStackService)
+        Akeneo.Model.Product Product { get; }
+        public ProductViewModel(Akeneo.Model.Product product) 
         {
-            Identifier = "1".PadLeft(14);
-            Name = Id;
+            Product = product ?? throw new ArgumentNullException(nameof(product));
+            Identifier = Product.Identifier;
+            this.WhenActivated(disposables =>
+            {
+
+            });
         }
 
         [Reactive]
         public string Identifier { get; set; }
         [Reactive]
         public string Name { get; set; }
+        [Reactive]
+        public Uri ImageUri { get; set; }
+        [Reactive]
+        public IList<AttributeViewModel> Attributes { get; set; }
 
-        public override IObservable<Unit> WhenNavigatingTo(INavigationParameter parameter)
+        public ViewModelActivator Activator => throw new NotImplementedException();
+    }
+
+    public class AttributeViewModel : ReactiveObject
+    {
+        public AttributeViewModel(string attributeCode, IEnumerable<Akeneo.Model.ProductValue> productValue)
         {
-            if (parameter.ContainsKey("parameter"))
-            {
-                var received = parameter["parameter"];
-                Debug.WriteLine($"Received {received}");
-                //ReceivedParameter = received.ToString();
-            }
-
-            return base.WhenNavigatedTo(parameter);
+            Code = attributeCode;
         }
+
+        public string Code { get; }
+        [Reactive]
+        public string Label { get; set; }
+        [Reactive]
+        public string Value { get; set; }
     }
 }

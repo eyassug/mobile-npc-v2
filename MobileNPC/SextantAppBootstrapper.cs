@@ -48,7 +48,7 @@
                 .RegisterView<TabPage, TabViewModel>()
                 .RegisterView<HomePage, HomeViewModel>()
                 .RegisterView<MainPage, MainViewModel>()
-                .RegisterView<ProductDetailPage, ProductViewModel>()
+                .RegisterView<ProductDetailPage, ProductDetailViewModel>()
                 .RegisterView<ScanPage, ScanViewModel>()
                 .RegisterView<AboutPage, AboutViewModel>()
                 .RegisterNavigationView(() => new AppNavigationView());
