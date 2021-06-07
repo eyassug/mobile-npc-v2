@@ -20,6 +20,7 @@ namespace MobileNPC.ViewModels
         public override string Id => "Scan Barcode";
         private readonly IBarcodeScannerService barcodeScannerService;
         private readonly IGS1ParserService gS1ParserService;
+        private readonly IProductService productService;
         public string TabTitle => Id;
         public ImageSource TabIcon => "";
 
@@ -31,31 +32,45 @@ namespace MobileNPC.ViewModels
         {
             barcodeScannerService = Locator.Current.GetService<IBarcodeScannerService>();
             gS1ParserService = Locator.Current.GetService<IGS1ParserService>();
-
+            productService = Locator.Current.GetService<IProductService>();
             notFoundInteration = new Interaction<string, Unit>();
             invalidBarcodeInteration = new Interaction<string, Unit>();
             ScanCommand = ReactiveCommand.CreateFromTask(async () =>
             {
-
-                //var result = await barcodeScannerService.ReadBarcodeAsync() ?? "1".PadLeft('0');
                 var barcodeResult = await barcodeScannerService.ReadBarcodeResultAsync();
                 if(barcodeResult != null)
                 {
-                    //var validBarcodeTypes = ZXing.BarcodeFormat.All_1D | ZXing.BarcodeFormat.CODE_128
-                    //                        | ZXing.BarcodeFormat.DATA_MATRIX | ZXing.BarcodeFormat.QR_CODE;
-
                     var gtin = gS1ParserService.GetGTIN(barcodeResult.Text);
 
                     // Validate GS1 Barcode
                     if(!string.IsNullOrEmpty(gtin))
-                        NavigationService.PushPage(new ProductDetailViewModel(ViewStackService), new NavigationParameter { { ProductDetailViewModel.ParameterName, gtin } })
-                        .Subscribe()
-                        .DisposeWith(Disposables);
+                    {
+                        var product = await productService.GetAsync(gtin);
+                        if(product != null)
+                            NavigationService.PushPage(new ProductDetailViewModel(ViewStackService),
+                                new NavigationParameter { { ProductDetailViewModel.ParameterName, product } })
+                                    .Subscribe()
+                                    .DisposeWith(Disposables);
+                        else
+                        {
+                            _ = await ProductNotFoundInteraction.Handle("A product with the specified GTIN could not be found!");
+                        }
+                    }
                     else
                     {
-                        // Invoke InvalidBarcode Interaction
-                        //var interactionResult = InvalidBarcodeInteraction.Handle("The barcode you scanned is not a GS1 barcode.");
+                        _ = await InvalidBarcodeInteraction.Handle("The barcode you scanned is not a GS1 barcode.");
                     }
+                }
+                else
+                {
+                    //_ = await InvalidBarcodeInteraction.Handle("The barcode you scanned is not a GS1 barcode.");
+                    //var sampleGtin = "18901213006973";
+                    //var product = await productService.GetAsync(sampleGtin);
+                    //if (product != null)
+                    //    NavigationService.PushPage(new ProductDetailViewModel(ViewStackService),
+                    //        new NavigationParameter { { ProductDetailViewModel.ParameterName, product } })
+                    //            .Subscribe()
+                    //            .DisposeWith(Disposables);
                 }
                     
             });
