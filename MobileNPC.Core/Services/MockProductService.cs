@@ -12,6 +12,14 @@
         {
         }
 
+        async public Task<Models.Product> GetAsync(string code)
+        {
+            var product = await GetProductAsync(code);
+            return new Models.Product(product, new Models.ProductConfiguration
+            {
+            });
+        }
+
         public Task<Product> GetProductAsync(string code)
         {
             return Task.FromResult(new Product
