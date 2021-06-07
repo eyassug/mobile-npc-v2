@@ -39,7 +39,7 @@
                 UserName = Configuration.AppConstants.Username,
                 Password = Configuration.AppConstants.Password
             };
-            dependencyResolver.RegisterConstant(new ProductService(akeneoOptions), typeof(IProductService));
+            dependencyResolver.RegisterConstant(new ProductService(akeneoOptions, Core.Models.ProductConfiguration.Default ), typeof(IProductService));
 #endif
 
             dependencyResolver.RegisterConstant(new GS1ParserService(), typeof(IGS1ParserService));
