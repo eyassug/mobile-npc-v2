@@ -11,14 +11,28 @@
     public class ProductService : IProductService
     {
         AkeneoClient AkeneoClient { get; }
+        Models.ProductConfiguration Configuration { get; }
         public ProductService(AkeneoOptions akeneoOptions)
         {
             AkeneoClient = new AkeneoClient(akeneoOptions);
         }
 
+        public ProductService(AkeneoOptions akeneoOptions, Models.ProductConfiguration configuration)
+            : this(akeneoOptions)
+        {
+            Configuration = configuration;
+        }
+
         async public Task<Product> GetProductAsync(string code)
         {
-            return await AkeneoClient.GetAsync<Product>(code);
+            try
+            {
+                return await AkeneoClient.GetAsync<Product>(code);
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
         }
 
         async public Task<IEnumerable<Product>> GetProductsAsync(string queryString, int page = 1, int limit = 25, string locale = "en_US")
@@ -32,6 +46,14 @@
         {
             var queryString = SearchQueryBuilder.Instance.GetQueryString(criteria);
             return GetProductsAsync(queryString, page, limit, locale);
+        }
+
+        async public Task<Models.Product> GetAsync(string code)
+        {
+            //TODO: Add PollyRetry
+            var product = await GetProductAsync(code);
+            if (product == null) return null;
+            return new Models.Product(product, Configuration);
         }
     }
 }

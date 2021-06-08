@@ -16,6 +16,7 @@
         {
             Product = product ?? throw new ArgumentNullException(nameof(product));
             Identifier = Product.Identifier;
+            Attributes = new List<Core.Models.Attribute>();
         }
 
         [Reactive]
@@ -25,7 +26,8 @@
         [Reactive]
         public Uri ImageUri { get; set; }
         [Reactive]
-        public IList<AttributeViewModel> Attributes { get; set; }
+        public List<Core.Models.Attribute> Attributes { get; set; }
+        
 
         public ViewModelActivator Activator => new ViewModelActivator();
     }

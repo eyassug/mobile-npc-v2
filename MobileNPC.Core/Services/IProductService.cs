@@ -44,5 +44,11 @@
         /// <param name="locale">Akeneo Locale</param>
         /// <returns></returns>
         Task<IEnumerable<Akeneo.Model.Product>> GetProductsAsync(IEnumerable<Akeneo.Search.Criteria> criteria, int page = 1, int limit = 25, string locale = "en_US");
+        ///// <summary>
+        ///// Gets a product with the specified identifier
+        ///// </summary>
+        ///// <param name="code">GTIN or Product Identification Code</param>
+        ///// <returns>The product with the specified code (if exists) or null if it doesn't.</returns>
+        Task<Models.Product> GetAsync(string code);
     }
 }

@@ -9,8 +9,27 @@
     x:Class="MobileNPC.Views.ProductDetailPage"
     x:TypeArguments="vm:ProductDetailViewModel"
     Visual="Material">
-    <StackLayout Spacing="20" Padding="15">
-        <v:ProductView x:Name="Product" />
+    <StackLayout Spacing="20" Padding="20,10">
+        <!--<StackLayout Orientation="Horizontal">
+            <Label Text="GTIN:" FontSize="Small" />
+            <Label x:Name="LabelGTIN" FontSize="Medium" />
+        </StackLayout>-->
+        <Image x:Name="ImageProduct"  />
+        <!--<Label Text="CountryOfOrigin" FontSize="Small" />
+        <Label x:Name="LabelCountry" d:Text="Item description" FontSize="Medium" />-->
+        
+        <ListView x:Name="ListAttributes">
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <ViewCell>
+                    <StackLayout>
+                        <Label Text="{Binding Label}" FontSize="Small" TextColor="Gray"/>
+                        <Label Text="{Binding Value}" HorizontalOptions="FillAndExpand"/>                        
+                    </StackLayout>
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
     </StackLayout>
     
 </rx:ReactiveContentPage>
