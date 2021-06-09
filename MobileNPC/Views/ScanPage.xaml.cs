@@ -31,7 +31,7 @@ namespace MobileNPC.Views
                         async context =>
                         {
                             await this.DisplayAlert("Invalid Barcode",
-                                $"The Barcode you scanned is invalid. Please scan a valid GS1 Barcode",
+                                $"{context.Input}",
                                 "OK");
                             context.SetOutput(Unit.Default);
                         }).DisposeWith(disposables);

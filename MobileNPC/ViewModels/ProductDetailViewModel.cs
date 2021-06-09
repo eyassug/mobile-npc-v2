@@ -24,7 +24,6 @@
         public ProductDetailViewModel(IViewStackService viewStackService) : base(viewStackService)
         {
             Identifier = "Loading";
-            ImageUri = ImageSource.FromUri(new Uri("https://i.ibb.co/42zVPjq/unavailable-image.jpg"));
             Attributes = new List<Core.Models.Attribute>();
             CountryOfOrigin = "N/A";
         }
@@ -35,26 +34,26 @@
         public string Identifier { get; set; } = "x";
 
         [Reactive]
-        public ImageSource ImageUri { get; set; }
+        public ImageSource Image { get; set; }
         [Reactive]
         public string CountryOfOrigin { get; set; }
         [Reactive]
         public List<Core.Models.Attribute> Attributes { get; set; }
-
 
         public override IObservable<Unit> WhenNavigatingTo(INavigationParameter parameter)
         {
             if (parameter.ContainsKey(ParameterName))
             {
                 var product = parameter.GetValue<Core.Models.Product>(ParameterName);
-                Identifier = product.Identifier;
-                Product = product;
-                if(!string.IsNullOrEmpty(Product.ImageUri))
+                if (!string.IsNullOrEmpty(product.ImageUri))
                 {
                     var builder = new UriBuilder(Configuration.AppConstants.AkeneoUrl);
-                    builder.Path = $"{AkeneoMediaPrefix}/{Product.ImageUri}";
-                    ImageUri = ImageSource.FromUri(builder.Uri);
+                    builder.Path = $"{AkeneoMediaPrefix}/{product.ImageUri}";
+                    Image = ImageSource.FromUri(builder.Uri);
                 }
+                Identifier = product.Identifier;
+                Product = product;
+                
                 Attributes.AddRange(Product.Attributes);
 ;            }
             return base.WhenNavigatedTo(parameter);

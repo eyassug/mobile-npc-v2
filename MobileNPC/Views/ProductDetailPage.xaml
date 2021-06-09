@@ -6,7 +6,7 @@
     xmlns:rx="clr-namespace:ReactiveUI.XamForms;assembly=ReactiveUI.XamForms"
     xmlns:vm="clr-namespace:MobileNPC.ViewModels"
     xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
-    xmlns:v="clr-namespace:MobileNPC.Views"
+    xmlns:ap="http://avantipoint.com/mobiletoolkit"
     x:Class="MobileNPC.Views.ProductDetailPage"
     x:TypeArguments="vm:ProductDetailViewModel"
     Visual="Material">
@@ -18,9 +18,8 @@
         <!--<Image x:Name="ImageProduct"  />-->
         <ffimageloading:CachedImage x:Name="ImageProduct"
                                     HorizontalOptions="Center"
-                                    VerticalOptions="Center"
-			                        WidthRequest="300" HeightRequest="300"
-			                        DownsampleToViewSize="true">
+                                    VerticalOptions="Center"                                    
+			                        WidthRequest="300" HeightRequest="300">
 		</ffimageloading:CachedImage>
         <!--<Label Text="CountryOfOrigin" FontSize="Small" />
         <Label x:Name="LabelCountry" d:Text="Item description" FontSize="Medium" />-->
