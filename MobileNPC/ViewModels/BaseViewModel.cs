@@ -9,7 +9,7 @@
     using System;
     using System.Reactive.Disposables;
     using ReactiveUI.Fody.Helpers;
-
+    using Xamarin.Essentials;
     public class BaseViewModel : ReactiveObject, INotifyPropertyChanged, IActivatableViewModel, IViewModel, INavigable
     {
         public virtual string Id => string.Empty;
@@ -21,12 +21,14 @@
 
         [Reactive]
         public virtual string Title { get; set; }
-        [ObservableAsProperty]
-        public bool IsOnline { get; }
+        [Reactive]
+        public bool IsOnline { get; private set; }
         [ObservableAsProperty]
         public bool IsBusy { get; }
         [Reactive]
         protected int BusyCounter { get; set; }
+
+        protected NetworkAccess NetworkAccess => Connectivity.NetworkAccess;
 
         protected virtual void HandleIsBusy(bool isBusy)
         {
@@ -40,13 +42,19 @@
         {
             ViewStackService = viewStackService ?? Locator.Current.GetService<IParameterViewStackService>();
             Disposables = new CompositeDisposable();
-
-            // Set IsBusy to true while BusyCounter > 0 (handling parallelism)
+            Connectivity.ConnectivityChanged += ConnectivityChangedHandler;
+            
             this.WhenAnyValue(x => x.BusyCounter)
                 .Select(busyCounter => busyCounter > 0)
                 .ObserveOn(RxApp.MainThreadScheduler)
                 .ToPropertyEx(this, x => x.IsBusy)
                 .DisposeWith(Disposables);
+
+        }
+
+        private void ConnectivityChangedHandler(object sender, ConnectivityChangedEventArgs e)
+        {
+            IsOnline = NetworkAccess == NetworkAccess.Internet;
         }
 
         protected IParameterViewStackService NavigationService => (IParameterViewStackService)ViewStackService;
