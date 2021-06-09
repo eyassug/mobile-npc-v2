@@ -30,6 +30,7 @@
         {
 #if DEBUG
             dependencyResolver.RegisterConstant(new MockProductService(), typeof(IProductService));
+
 #else
             var akeneoOptions = new Akeneo.AkeneoOptions
             {
@@ -39,11 +40,11 @@
                 UserName = Configuration.AppConstants.Username,
                 Password = Configuration.AppConstants.Password
             };
-            dependencyResolver.RegisterConstant(new ProductService(akeneoOptions, Core.Models.ProductConfiguration.Default ), typeof(IProductService));
+            dependencyResolver.RegisterLazySingleton<IProductService>(() => new ProductService(akeneoOptions, Core.Models.ProductConfiguration.Default ));
 #endif
 
             dependencyResolver.RegisterConstant(new GS1ParserService(), typeof(IGS1ParserService));
-
+            dependencyResolver.RegisterConstant(new Services.Connectivity(), typeof(Services.IConnectivity));
             dependencyResolver
                 .RegisterView<TabPage, TabViewModel>()
                 .RegisterView<MainPage, MainViewModel>()
