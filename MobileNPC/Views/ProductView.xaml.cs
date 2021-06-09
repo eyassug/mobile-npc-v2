@@ -1,6 +1,7 @@
 ﻿using Xamarin.Forms;
 using ReactiveUI.XamForms;
 using ReactiveUI;
+using System.Reactive.Disposables;
 
 namespace MobileNPC.Views
 {
@@ -11,9 +12,8 @@ namespace MobileNPC.Views
             InitializeComponent();
             this.WhenActivated(disposables =>
             {
-                this.Bind(ViewModel, x => x.Identifier, x => x.lblGTIN.Text);
-
-                this.Bind(ViewModel, x => x.Name, x => x.lblFunctionalName.Text);
+                this.Bind(ViewModel, vm => vm.ImageUri, v => v.ImageProduct.Source).DisposeWith(disposables);
+                this.OneWayBind(ViewModel, vm => vm.Attributes, v => v.ListAttributes.ItemsSource).DisposeWith(disposables);
             });
         }
     }

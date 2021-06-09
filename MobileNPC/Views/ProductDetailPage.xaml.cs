@@ -10,10 +10,8 @@ namespace MobileNPC.Views
             InitializeComponent();
             this.WhenActivated(disposables =>
             {
-                //this.Bind(ViewModel, vm => vm.Identifier, v => v.LabelGTIN.Text).DisposeWith(disposables);
                 this.Bind(ViewModel, vm => vm.ImageUri, v => v.ImageProduct.Source).DisposeWith(disposables);
                 this.OneWayBind(ViewModel, vm => vm.Attributes, v => v.ListAttributes.ItemsSource).DisposeWith(disposables);
-                //this.Bind(ViewModel, vm => vm.CountryOfOrigin, v => v.LabelCountry.Text).DisposeWith(disposables);
             });
         }
     }

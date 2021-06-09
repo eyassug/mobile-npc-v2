@@ -15,9 +15,7 @@
         async public Task<Models.Product> GetAsync(string code)
         {
             var product = await GetProductAsync(code);
-            return new Models.Product(product, new Models.ProductConfiguration
-            {
-            });
+            return new Models.Product(product, Models.ProductConfiguration.Default);
         }
 
         public Task<Product> GetProductAsync(string code)
@@ -27,7 +25,10 @@
                 Identifier = code,
                 Values = new Dictionary<string, List<Akeneo.Model.ProductValue>>
                 {
-                    //TODO: Add product attributes here
+                    {"COUNTRY_OF_ORIGIN", new List<Akeneo.Model.ProductValue>{ new Akeneo.Model.ProductValue{Data = "Demo Country"} } },
+                    {"GS1_BRANDNAME", new List<Akeneo.Model.ProductValue>{ new Akeneo.Model.ProductValue{Data = "Demo Brand"} } },
+                    {"GS1_FUNCTIONAL_NAME", new List<Akeneo.Model.ProductValue>{ new Akeneo.Model.ProductValue{Data = "Demo Functional Name"} } },
+                    {"MANUFACTURER_NAME", new List<Akeneo.Model.ProductValue>{ new Akeneo.Model.ProductValue{Data = "Demo Manufacturer"} } }
                 }
             });
         }

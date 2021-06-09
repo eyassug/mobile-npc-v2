@@ -36,6 +36,16 @@ namespace MobileNPC.Views
                             context.SetOutput(Unit.Default);
                         }).DisposeWith(disposables);
 
+                this.BindInteraction(ViewModel,
+                        vm => vm.NotConnectedInteraction,
+                        async context =>
+                        {
+                            await this.DisplayAlert("Connection Error",
+                                $"{context.Input}",
+                                "OK");
+                            context.SetOutput(Unit.Default);
+                        }).DisposeWith(disposables);
+
                 this.BindCommand(ViewModel, x => x.ScanCommand, x => x.ButtonScan)
                     .DisposeWith(disposables);
             });

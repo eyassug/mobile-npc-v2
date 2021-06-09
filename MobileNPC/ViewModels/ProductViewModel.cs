@@ -8,6 +8,7 @@
     using ReactiveUI;
     using ReactiveUI.Fody.Helpers;
     using Sextant;
+    using Xamarin.Forms;
 
     public class ProductViewModel : ReactiveObject, IActivatableViewModel
     {
@@ -22,12 +23,12 @@
         [Reactive]
         public string Identifier { get; set; }
         [Reactive]
-        public string Name { get; set; }
+        public ImageSource ImageUri { get; set; }
         [Reactive]
-        public Uri ImageUri { get; set; }
+        public string CountryOfOrigin { get; set; }
         [Reactive]
         public List<Core.Models.Attribute> Attributes { get; set; }
-        
+
 
         public ViewModelActivator Activator => new ViewModelActivator();
     }
