@@ -22,7 +22,7 @@ namespace MobileNPC.Views
                         async context =>
                         {
                             await this.DisplayAlert("Not Found",
-                                $"A Product with the specified GTIN could not be found! Please try again!",
+                                $"{context.Input}",
                                 "OK");
                             context.SetOutput(Unit.Default);
                         }).DisposeWith(disposables);

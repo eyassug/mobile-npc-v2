@@ -62,7 +62,7 @@ namespace MobileNPC.ViewModels
                                         .DisposeWith(Disposables);
                             else
                             {
-                                _ = await ProductNotFoundInteraction.Handle("A product with the specified GTIN could not be found!");
+                                _ = await ProductNotFoundInteraction.Handle($"A product with the specified GTIN '{gtin}'could not be found!");
                             }
                         }
                     }
