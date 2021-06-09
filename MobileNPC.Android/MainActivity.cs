@@ -22,8 +22,10 @@ namespace MobileNPC.Droid
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::ZXing.Net.Mobile.Forms.Android.Platform.Init();
             global::Rg.Plugins.Popup.Popup.Init(this, savedInstanceState);
+            FFImageLoading.Forms.Platform.CachedImageRenderer.Init(enableFastRenderer: true);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             global::Xamarin.Forms.FormsMaterial.Init(this, savedInstanceState);
+            FFImageLoading.Forms.Platform.CachedImageRenderer.InitImageViewHandler();
             LoadApplication(new App());
         }
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
