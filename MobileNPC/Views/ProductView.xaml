@@ -4,20 +4,27 @@
              xmlns:rx="clr-namespace:ReactiveUI.XamForms;assembly=ReactiveUI.XamForms"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:vm="clr-namespace:MobileNPC.ViewModels"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              x:Class="MobileNPC.Views.ProductView"
              x:TypeArguments="vm:ProductViewModel">
     <rx:ReactiveContentView.Content>
-        <StackLayout Spacing="20" Padding="15">
-        <Label Text="Brand Name:" FontSize="Small" />
-        <Label x:Name="lblBrand" d:Text="Item name" FontSize="Medium" />
-        <Label Text="GTIN:" FontSize="Small" />
-        <Label x:Name="lblGTIN" d:Text="Item description" FontSize="Medium" />
-        <Label Text="Functional Name" FontSize="Small" />
-        <Label x:Name="lblFunctionalName" d:Text="Functional Name" FontSize="Medium" />
-        <Label Text="Manufacturer" FontSize="Small" />
-        <Label x:Name="lblManufacturer" d:Text="Manufacturer" FontSize="Medium" />
-        <Label Text="Images" FontSize="Small" />
-        <Image x:Name="imgImage"  />
-    </StackLayout>
+        <StackLayout Spacing="20" Padding="20,10">
+            <ffimageloading:CachedImage x:Name="ImageProduct"
+                                        HorizontalOptions="Center"
+                                        VerticalOptions="Center"
+			                            WidthRequest="300" HeightRequest="300"
+			                            DownsampleToViewSize="true">
+		    </ffimageloading:CachedImage>
+            <!--<Label Text="CountryOfOrigin" FontSize="Small" />
+            <Label x:Name="LabelCountry" d:Text="Item description" FontSize="Medium" />-->
+        
+            <ListView x:Name="ListAttributes">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextCell Text="{Binding Value}" Detail="{Binding Label}" Height="100" />
+                        </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
     </rx:ReactiveContentView.Content>
 </rx:ReactiveContentView>
