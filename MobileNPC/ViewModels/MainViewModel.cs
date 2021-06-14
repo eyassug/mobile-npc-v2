@@ -23,7 +23,7 @@
             TabViewModels = new List<Func<IViewStackService, TabViewModel>>()
             {
                 (customViewStack) => new TabViewModel("Scan", "fas fa-barcode", customViewStack, () => new ScanViewModel(customViewStack)),
-                (customViewStack) => new TabViewModel("About", ImageSource.FromResource("MobileNPC.Resources.tab_about.png"), customViewStack, () => new AboutViewModel(customViewStack)),
+                (customViewStack) => new TabViewModel("About", "fas fa-info-circle", customViewStack, () => new AboutViewModel(customViewStack)),
             };
         }
     }

@@ -11,15 +11,14 @@
     x:TypeArguments="vm:ProductDetailViewModel"
     Visual="Material">
     <StackLayout Spacing="20" Padding="20,10">
-        <!--<StackLayout Orientation="Horizontal">
-            <Label Text="GTIN:" FontSize="Small" />
-            <Label x:Name="LabelGTIN" FontSize="Medium" />
-        </StackLayout>-->
-        <!--<Image x:Name="ImageProduct"  />-->
         <ffimageloading:CachedImage x:Name="ImageProduct"
                                     HorizontalOptions="Center"
                                     VerticalOptions="Center"                                    
-			                        WidthRequest="300" HeightRequest="300">
+			                        WidthRequest="300"
+                                    HeightRequest="300"
+                                    DownsampleToViewSize="True"
+                                    RetryCount="10"
+                                    RetryDelay="500">
 		</ffimageloading:CachedImage>
         <!--<Label Text="CountryOfOrigin" FontSize="Small" />
         <Label x:Name="LabelCountry" d:Text="Item description" FontSize="Medium" />-->
