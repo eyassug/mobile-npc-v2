@@ -40,7 +40,10 @@
                 UserName = Configuration.AppConstants.Username,
                 Password = Configuration.AppConstants.Password
             };
-            dependencyResolver.RegisterLazySingleton<IProductService>(() => new AttributeProductService(akeneoOptions, Core.Models.ProductConfiguration.Rwanda ));
+            var configuration = string.Compare(Configuration.AppConstants.EnvironmentName, "Rwanda", StringComparison.InvariantCultureIgnoreCase) == 0
+                            ? Core.Models.ProductConfiguration.Rwanda
+                            : Core.Models.ProductConfiguration.Default;
+            dependencyResolver.RegisterLazySingleton<IProductService>(() => new AttributeProductService(akeneoOptions, configuration));
 #endif
 
             dependencyResolver.RegisterConstant(new GS1ParserService(), typeof(IGS1ParserService));
