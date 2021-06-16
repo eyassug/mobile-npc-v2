@@ -12,6 +12,11 @@
             Label = label;
             Value = productValue?.Data?.ToString() ?? "N/A";
         }
+
+        public Attribute(string code, string label, string value) : this(code, label, new Akeneo.Model.ProductValue())
+        {
+            Value = value;
+        }
         public string Code { get; }
         public string Label { get; }
         public string Value { get; }

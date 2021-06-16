@@ -17,6 +17,7 @@
     {
 
         const string AkeneoMediaPrefix = "media/cache/preview";
+        const string ImageNotAvailableUri = "https://i.ibb.co/42zVPjq/unavailable-image.jpg";
         public const string ParameterName = "parameter";
         public override string Id => Identifier;
 
@@ -45,12 +46,14 @@
             if (parameter.ContainsKey(ParameterName))
             {
                 var product = parameter.GetValue<Core.Models.Product>(ParameterName);
-                if (!string.IsNullOrEmpty(product.ImageUri))
+                if (!string.IsNullOrEmpty(product.ImageUri) && string.Compare(product.ImageUri, "N/A", StringComparison.OrdinalIgnoreCase) != 0)
                 {
                     var builder = new UriBuilder(Configuration.AppConstants.AkeneoUrl);
                     builder.Path = $"{AkeneoMediaPrefix}/{product.ImageUri}";
                     Image = ImageSource.FromUri(builder.Uri);
                 }
+                else
+                    Image = ImageSource.FromUri(new Uri(ImageNotAvailableUri));
                 Identifier = product.Identifier;
                 Product = product;
                 
