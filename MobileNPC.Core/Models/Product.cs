@@ -35,12 +35,10 @@
 
         string GetCountryName(string countryCode)
         {
-            var regionInfo = CultureInfo
-                    .GetCultures(CultureTypes.SpecificCultures)
-                    .Select(culture => new RegionInfo(culture.LCID))
-                    .FirstOrDefault(region => region.TwoLetterISORegionName == countryCode);
-            // TODO: add countryCode dictionary and get values
-            return regionInfo?.EnglishName;
+            var country = ISO3166.Country.List.Where(c => c.TwoLetterCode.Equals(countryCode, System.StringComparison.OrdinalIgnoreCase)
+                                                        || c.ThreeLetterCode.Equals(countryCode, System.StringComparison.OrdinalIgnoreCase)
+                                                        || c.NumericCode.Equals(countryCode, System.StringComparison.OrdinalIgnoreCase)).FirstOrDefault();
+            return country?.Name;
         }
     }
 }
