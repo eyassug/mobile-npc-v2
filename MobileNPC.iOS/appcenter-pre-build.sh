@@ -35,11 +35,11 @@ then
     echo "You need define the AKENEO_CONFIG_URL variable in App Center"
     exit
 fi
-# if [ -z "$ENVIRONMENT_NAME" ]
-# then
-#     echo "You need define the ENVIRONMENT_NAME variable in App Center"
-#     exit
-# fi
+if [ -z "$ENVIRONMENT_NAME" ]
+then
+    echo "You need define the ENVIRONMENT_NAME variable in App Center"
+    exit
+fi
 
 APP_CONSTANT_FILE=$APPCENTER_SOURCE_DIRECTORY/MobileNPC/Core/AppConstants.cs
 
@@ -57,8 +57,8 @@ then
     sed -i '' 's#ClientSecret = "[-A-Za-z0-9:_./]*"#ClientSecret = "'$AKENEO_CLIENT_SECRET'"#' $APP_CONSTANT_FILE
     echo "Updating AkeneoConfigUrl to $AKENEO_CONFIG_URL in AppConstant.cs"
     sed -i '' 's#AkeneoConfigUrl = "[-A-Za-z0-9:_./]*"#AkeneoConfigUrl = "'$AKENEO_CONFIG_URL'"#' $APP_CONSTANT_FILE
-    # echo "Updating EnvironmentName to $ENVIRONMENT_NAME in AppConstant.cs"
-    # sed -i '' 's#EnvironmentName = "[-A-Za-z0-9:_./]*"#EnvironmentName = "'$ENVIRONMENT_NAME'"#' $APP_CONSTANT_FILE
+    echo "Updating EnvironmentName to $ENVIRONMENT_NAME in AppConstant.cs"
+    sed -i '' 's#EnvironmentName = "[-A-Za-z0-9:_./]*"#EnvironmentName = "'$ENVIRONMENT_NAME'"#' $APP_CONSTANT_FILE
 
     echo "File content:"
     cat $APP_CONSTANT_FILE

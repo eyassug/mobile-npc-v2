@@ -8,6 +8,6 @@
         public const string ClientId = "ClientId";
         public const string ClientSecret = "ClientSecret";
         public const string AkeneoConfigUrl = "AkeneoConfigUrl";
-        //public const string EnvironmentName = "EnvironmentName";
+        public const string EnvironmentName = "EnvironmentName";
     }
 }
