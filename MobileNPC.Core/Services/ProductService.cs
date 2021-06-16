@@ -10,7 +10,7 @@
 
     public class ProductService : IProductService
     {
-        AkeneoClient AkeneoClient { get; }
+        protected AkeneoClient AkeneoClient { get; }
         Models.ProductConfiguration Configuration { get; }
         public ProductService(AkeneoOptions akeneoOptions)
         {
@@ -23,7 +23,7 @@
             Configuration = configuration;
         }
 
-        async public Task<Product> GetProductAsync(string code)
+        async public virtual Task<Product> GetProductAsync(string code)
         {
             try
             {
