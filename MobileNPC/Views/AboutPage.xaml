@@ -37,7 +37,7 @@
                                 <Span Text="This app scans GS1 barcodes for health  " />
                                 <Span Text="commodities and displays product information " />
                                 <Span Text="from the National Product Catalog of" />
-                                <Span Text=" Malawi" FontAttributes="Bold" />
+                                <Span Text=" Rwanda" FontAttributes="Bold" />
                                 <Span Text="." />
                             </FormattedString.Spans>
                         </FormattedString>

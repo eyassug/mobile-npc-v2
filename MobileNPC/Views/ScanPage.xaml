@@ -16,7 +16,7 @@
                     <Label.FormattedText>
                         <FormattedString>
                             <FormattedString.Spans>
-                                <Span Text="Welcome to the National Product Catalog of Malawi" FontAttributes="Bold" FontSize="18" />
+                                <Span Text="Welcome to the National Product Catalog of Rwanda" FontAttributes="Bold" FontSize="18" />
                             </FormattedString.Spans>
                         </FormattedString>
                     </Label.FormattedText>

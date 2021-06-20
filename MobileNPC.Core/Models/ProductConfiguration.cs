@@ -9,7 +9,7 @@
         public string GTINAttribute { get; set; }
         public List<AttributeConfiguration> AttributeConfigurations { get; set; } = new List<AttributeConfiguration>();
 
-        public static ProductConfiguration Default => Malawi;
+        public static ProductConfiguration Default => Rwanda;
 
         public static ProductConfiguration Malawi => new ProductConfiguration
         {
