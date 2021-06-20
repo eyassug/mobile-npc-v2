@@ -5,11 +5,12 @@ using Xamarin.Forms.Xaml;
 
 namespace MobileNPC.Views
 {
-    public partial class AboutPage : ContentPage
+    public partial class AboutPage : ReactiveUI.XamForms.ReactiveContentPage<ViewModels.AboutViewModel>
     {
         public AboutPage()
         {
             InitializeComponent();
+            ImageLogo.Source = ImageSource.FromResource("MobileNPC.Resources.npc_icon.png");
         }
     }
 }

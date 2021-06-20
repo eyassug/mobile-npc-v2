@@ -36,6 +36,12 @@
     <PackageReference Include="ReactiveUI.Testing">
       <Version>13.3.2</Version>
     </PackageReference>
+    <PackageReference Include="Xamarin.FFImageLoading.Forms">
+      <Version>2.4.11.982</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.FFImageLoading">
+      <Version>2.4.11.982</Version>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MobileNPC.iOS\MobileNPC.iOS.csproj">
@@ -55,8 +61,6 @@
     <Compile Include="Tests/BaseTest.cs" />
     <Compile Include="Tests/MockDataTests.cs" />
     <Compile Include="Pages/BasePage.cs" />
-    <Compile Include="Pages/ItemsPage.cs" />
-    <Compile Include="Pages/NewItemPage.cs" />
     <Compile Include="AppInitializer.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

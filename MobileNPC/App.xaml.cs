@@ -1,11 +1,8 @@
-﻿using System;
-using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
-using MobileNPC.Services;
-using MobileNPC.Views;
+﻿using Xamarin.Forms;
 using Microsoft.AppCenter;
 using Microsoft.AppCenter.Analytics;
 using Microsoft.AppCenter.Crashes;
+using AP.MobileToolkit.Fonts;
 
 namespace MobileNPC
 {
@@ -14,10 +11,14 @@ namespace MobileNPC
 
         public App()
         {
+            FontRegistry.RegisterFonts(FontAwesomeBrands.Font,
+                                       FontAwesomeRegular.Font,
+                                       FontAwesomeSolid.Font);
+
             InitializeComponent();
 
-            DependencyService.Register<MockDataStore>();
-            MainPage = new MainPage();
+            var bootstrapper = new SextantAppBootstrapper();
+            MainPage = bootstrapper.CreateMainPage();
         }
 
         protected override void OnStart()

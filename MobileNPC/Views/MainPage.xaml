@@ -1,31 +1,10 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
-            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-            xmlns:views="clr-namespace:MobileNPC.Views"
-            x:Class="MobileNPC.Views.MainPage">
-
-    <TabbedPage.Children>
-        <NavigationPage Title="Browse">
-            <x:Arguments>
-                <views:ItemsPage />
-            </x:Arguments>
-            <NavigationPage.Icon>
-                <OnPlatform x:TypeArguments="FileImageSource">
-                    <On Platform="iOS" Value="tab_feed.png"/>
-                </OnPlatform>
-            </NavigationPage.Icon>
-        </NavigationPage>
-        
-        <NavigationPage Title="About">
-            <x:Arguments>
-                <views:AboutPage />
-            </x:Arguments>
-            <NavigationPage.Icon>
-                <OnPlatform x:TypeArguments="FileImageSource">
-                    <On Platform="iOS" Value="tab_about.png"/>
-                </OnPlatform>
-            </NavigationPage.Icon>
-        </NavigationPage>
-    </TabbedPage.Children>
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<rxui:ReactiveTabbedPage x:Class="MobileNPC.Views.MainPage"
+                         xmlns="http://xamarin.com/schemas/2014/forms"
+                         xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                         xmlns:rxui="clr-namespace:ReactiveUI.XamForms;assembly=ReactiveUI.XamForms"
+                         xmlns:vm="clr-namespace:MobileNPC.ViewModels;assembly=MobileNPC"
+                         x:Name="MainNavigationTabbedView"
+                         x:TypeArguments="vm:MainViewModel">
     
-</TabbedPage>
+</rxui:ReactiveTabbedPage>

@@ -25,8 +25,13 @@ namespace MobileNPC.iOS
 #if ENABLE_TEST_CLOUD
             Xamarin.Calabash.Start();
 #endif
+
+            global::Rg.Plugins.Popup.Popup.Init();
+            global::FFImageLoading.Forms.Platform.CachedImageRenderer.Init();
             global::Xamarin.Forms.Forms.Init();
+            global::ZXing.Net.Mobile.Forms.iOS.Platform.Init();
             global::Xamarin.Forms.FormsMaterial.Init();
+            FFImageLoading.Forms.Platform.CachedImageRenderer.InitImageSourceHandler();
             LoadApplication(new App());
 
             return base.FinishedLaunching(app, options);

@@ -42,6 +42,8 @@
     <WarningLevel>4</WarningLevel>
     <AndroidManagedSymbols>true</AndroidManagedSymbols>
     <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
+    <AndroidEnableProfiledAot>true</AndroidEnableProfiledAot>
+    <AndroidSupportedAbis>armeabi-v7a;arm64-v8a;x86;x86_64</AndroidSupportedAbis>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Mono.Android" />
@@ -53,6 +55,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="AP.MobileToolkit.Forms.Fonts" Version="3.0.0.1540-pre" />
+    <PackageReference Include="AP.MobileToolkit.Forms.Fonts.FontAwesomeFree.Brands" Version="3.0.0.1540-pre" />
+    <PackageReference Include="AP.MobileToolkit.Forms.Fonts.FontAwesomeFree.Regular" Version="3.0.0.1540-pre" />
+    <PackageReference Include="AP.MobileToolkit.Forms.Fonts.FontAwesomeFree.solid" Version="3.0.0.1540-pre" />
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />
     <PackageReference Include="Xamarin.Essentials" Version="1.6.1" />
     <PackageReference Include="ReactiveUI.XamForms">
@@ -63,6 +69,39 @@
     </PackageReference>
     <PackageReference Include="Xamarin.Forms.Visual.Material">
       <Version>5.0.0.2012</Version>
+    </PackageReference>
+    <PackageReference Include="ZXing.Net.Mobile.Forms">
+      <Version>2.4.1</Version>
+    </PackageReference>
+    <PackageReference Include="ZXing.Net.Mobile">
+      <Version>2.4.1</Version>
+    </PackageReference>
+    <PackageReference Include="Rg.Plugins.Popup">
+      <Version>1.1.5.188</Version>
+    </PackageReference>
+    <PackageReference Include="Sextant.XamForms">
+      <Version>2.12.4</Version>
+    </PackageReference>
+    <PackageReference Include="Com.Airbnb.Xamarin.Forms.Lottie">
+      <Version>4.0.9</Version>
+    </PackageReference>
+    <PackageReference Include="Com.Airbnb.Android.Lottie">
+      <Version>3.6.1</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.Configuration">
+      <Version>5.0.0</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json">
+      <Version>5.0.0</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.FFImageLoading.Forms">
+      <Version>2.4.11.982</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.FFImageLoading">
+      <Version>2.4.11.982</Version>
+    </PackageReference>
+    <PackageReference Include="ReactiveUI.Events.XamEssentials">
+      <Version>13.3.2</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
@@ -98,6 +137,10 @@
     <ProjectReference Include="..\MobileNPC\MobileNPC.csproj">
       <Project>{D8E7F97D-8875-4259-9170-5EC02077DFDF}</Project>
       <Name>MobileNPC</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MobileNPC.Core\MobileNPC.Core.csproj">
+      <Project>{F19CFAF3-53BF-4F09-A1CC-824E2FC8FD56}</Project>
+      <Name>MobileNPC.Core</Name>
     </ProjectReference>
   </ItemGroup>
  <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
