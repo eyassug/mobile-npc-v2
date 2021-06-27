@@ -96,13 +96,13 @@ namespace MobileNPC.ViewModels
             }
             catch (Exception)
             {
-                return false;
+                return await RequestPermissionAsync() == PermissionStatus.Granted;
             }
         }
 
         async Task<PermissionStatus> RequestPermissionAsync()
         {
-            return await Permissions.RequestAsync<Permissions.LocationWhenInUse>();
+            return await Permissions.RequestAsync<Permissions.Camera>();
         }
 
     }
