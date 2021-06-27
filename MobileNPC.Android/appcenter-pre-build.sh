@@ -41,7 +41,7 @@ then
     exit
 fi
 
-APP_CONSTANT_FILE=$APPCENTER_SOURCE_DIRECTORY/MobileNPC/Core/AppConstants.cs
+APP_CONSTANT_FILE=$APPCENTER_SOURCE_DIRECTORY/MobileNPC/Configuration/AppConstants.cs
 
 if [ -e "$APP_CONSTANT_FILE" ]
 then
