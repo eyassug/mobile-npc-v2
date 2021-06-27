@@ -34,9 +34,11 @@
             GTINAttribute = "GS1_GTIN_FOR_A_GS1_STANDARD_ITEM",
             AttributeConfigurations = new List<AttributeConfiguration>
             {
+                new AttributeConfiguration {Code = "GS1_GTIN_FOR_A_GS1_STANDARD_ITEM", Label = "GTIN"},
                 new AttributeConfiguration {Code = "RW_PRODUCT_DESCRIPTION", Label = "Description"},
                 new AttributeConfiguration {Code = "COUNTRY_OF_ORIGIN", Label = "Country Of Origin"},
                 new AttributeConfiguration {Code = "GS1_BRANDNAME", Label = "Brand Name"},
+                new AttributeConfiguration {Code = "ROUTE_OF_ADMINISTRATION", Label = "Route of Administration"},
                 new AttributeConfiguration {Code = "MANUFACTURER_NAME", Label = "Manufacturer Name"}
             }
         };
