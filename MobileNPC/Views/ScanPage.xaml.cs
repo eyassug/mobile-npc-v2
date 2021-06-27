@@ -27,6 +27,15 @@ namespace MobileNPC.Views
                             context.SetOutput(Unit.Default);
                         }).DisposeWith(disposables);
                 this.BindInteraction(ViewModel,
+                        vm => vm.PermissionNotGrantedInteraction,
+                        async context =>
+                        {
+                            await this.DisplayAlert("Permission Error",
+                                $"{context.Input}",
+                                "OK");
+                            context.SetOutput(Unit.Default);
+                        }).DisposeWith(disposables);
+                this.BindInteraction(ViewModel,
                         vm => vm.InvalidBarcodeInteraction,
                         async context =>
                         {
