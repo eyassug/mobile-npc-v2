@@ -30,6 +30,8 @@
             var productValue = values?.FirstOrDefault(v => v.Locale == configuration.DefaultLocale) ?? values?.FirstOrDefault();
             if (string.Compare(code, configuration.CountryAttribute, System.StringComparison.InvariantCultureIgnoreCase) == 0)
                 return new Attribute(code, label, GetCountryName(productValue?.Data?.ToString()));
+            else if (string.Compare(code, configuration.GTINAttribute, System.StringComparison.InvariantCultureIgnoreCase) == 0)
+                return new Attribute(code, label, product.Identifier);
             return new Attribute(code: code, label: label, productValue);
         }
 

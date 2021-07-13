@@ -14,8 +14,8 @@
         <ffimageloading:CachedImage x:Name="ImageProduct"
                                     HorizontalOptions="Center"
                                     VerticalOptions="Center"                                    
-			                        WidthRequest="300"
-                                    HeightRequest="300"
+			                        WidthRequest="250"
+                                    HeightRequest="250"
                                     DownsampleToViewSize="True"
                                     RetryCount="10"
                                     RetryDelay="500">
