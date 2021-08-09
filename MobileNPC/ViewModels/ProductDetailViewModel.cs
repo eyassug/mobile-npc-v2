@@ -21,7 +21,7 @@
         public const string ParameterName = "parameter";
         public override string Id => Identifier;
 
-        private readonly IProductService productService;
+        //private readonly IProductService productService;
         public ProductDetailViewModel(IViewStackService viewStackService) : base(viewStackService)
         {
             Identifier = "Loading";
