@@ -31,6 +31,7 @@
             }
             catch (Exception ex)
             {
+                System.Diagnostics.Debug.WriteLine($"Error fetching product: '{code}'\n{ex.Message}");
                 return null;
             }
         }
