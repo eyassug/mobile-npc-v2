@@ -18,6 +18,13 @@
             Attributes = configuration.AttributeConfigurations?
             .Select(a => GetAttribute(a.Code, a.Label)).ToList() ?? new List<Attribute>();
         }
+
+        public Product(Akeneo.Model.Product product, ProductConfiguration configuration, Services.GS1Properties properties) : this(product, configuration)
+        {
+            if(!string.IsNullOrEmpty(properties?.ExpirationDate))
+                Attributes.Add(new Attribute("EXP", "Expiration Date", properties.ExpirationDate));
+        }
+
         public string Identifier { get; }
         public string ImageUri { get; }
         public string CountryOfOrigin { get; }

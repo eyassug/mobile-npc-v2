@@ -50,5 +50,12 @@
         ///// <param name="code">GTIN or Product Identification Code</param>
         ///// <returns>The product with the specified code (if exists) or null if it doesn't.</returns>
         Task<Models.Product> GetAsync(string code);
+        ///// <summary>
+        ///// Gets a product with the specified identifier and associated GS1 
+        ///// </summary>
+        ///// <param name="code">GTIN or Product Identification Code</param>
+        ///// <param name="properties">Additional GS1 Properties</param>
+        ///// <returns>The product with the specified code (if exists) or null if it doesn't.</returns>
+        Task<Models.Product> GetAsync(string code, GS1Properties properties);
     }
 }

@@ -56,5 +56,13 @@
             if (product == null) return null;
             return new Models.Product(product, Configuration);
         }
+
+        async public Task<Models.Product> GetAsync(string code, GS1Properties properties)
+        {
+            //TODO: Add PollyRetry
+            var product = await GetProductAsync(code);
+            if (product == null) return null;
+            return new Models.Product(product, Configuration, properties);
+        }
     }
 }
