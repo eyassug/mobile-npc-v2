@@ -9,6 +9,10 @@
         const int MinLength = 13;
         const int MaxLength = 14;
         const string GtinIdentifier = "01";
+        const string BatchNumberIdentifier = "10";
+        const string ProductionDateIdentifier = "11";
+        const string ExpirationDateIdentifier = "17";
+
         public GS1ParserService()
         {
         }
@@ -16,7 +20,21 @@
         public Dictionary<string, string> GetApplicationIdentifiers(string barcodeContent)
         {
             if (string.IsNullOrEmpty(barcodeContent)) throw new ArgumentException(nameof(barcodeContent));
-            throw new NotImplementedException();
+            return GS1Net.Parse(barcodeContent).ToDictionary(ai => ai.Key.AI, ai =>  ai.Value);
+        }
+
+        public GS1Properties GetCommonIdentifiers(string barcodeContent)
+        {
+            var identifiers = GetApplicationIdentifiers(barcodeContent);
+            if (barcodeContent.Length == MinLength || barcodeContent.Length == MaxLength)
+                return new GS1Properties { GTIN = barcodeContent };
+            return new GS1Properties
+            {
+                GTIN = identifiers.FirstOrDefault(ai => ai.Key == GtinIdentifier).Value,
+                BatchOrLotNumber = identifiers.FirstOrDefault(ai => ai.Key == BatchNumberIdentifier).Value,
+                ProductionDate = identifiers.FirstOrDefault(ai => ai.Key == ProductionDateIdentifier).Value,
+                ExpirationDate = identifiers.FirstOrDefault(ai => ai.Key == ExpirationDateIdentifier).Value,
+            };
         }
 
         public string GetGTIN(string barcodeContent)
