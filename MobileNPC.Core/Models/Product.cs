@@ -58,7 +58,10 @@
                 case Services.GS1Properties.Identifiers.BatchNumber:
                     return new Attribute(code, label, gS1Properties?.BatchOrLotNumber ?? "N/A");
                 case Services.GS1Properties.Identifiers.ProductionDate:
-                    return new Attribute(code, label, gS1Properties?.ProductionDate ?? "N/A");
+                    string productionDate = null;
+                    if (!string.IsNullOrEmpty(gS1Properties?.ProductionDate) && System.DateTime.TryParseExact(gS1Properties.ProductionDate, GS1DateTimeFormat, CultureInfo.InvariantCulture, DateTimeStyles.None, out var dateOfProduction))
+                        productionDate = dateOfProduction.ToString(DateTimeFormat);
+                    return new Attribute(code, label, productionDate ?? "N/A");
                 case Services.GS1Properties.Identifiers.ExpirationDate:
                     string expirationDate = null;
                     if (!string.IsNullOrEmpty(gS1Properties?.ExpirationDate) && System.DateTime.TryParseExact(gS1Properties.ExpirationDate, GS1DateTimeFormat, CultureInfo.InvariantCulture, DateTimeStyles.None, out var expiryDate))
