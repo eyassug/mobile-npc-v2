@@ -8,10 +8,10 @@
     {
         const int MinLength = 13;
         const int MaxLength = 14;
-        const string GtinIdentifier = "01";
-        const string BatchNumberIdentifier = "10";
-        const string ProductionDateIdentifier = "11";
-        const string ExpirationDateIdentifier = "17";
+        const string GtinIdentifier = GS1Properties.Identifiers.GTIN;
+        const string BatchNumberIdentifier = GS1Properties.Identifiers.BatchNumber;
+        const string ProductionDateIdentifier = GS1Properties.Identifiers.ProductionDate;
+        const string ExpirationDateIdentifier = GS1Properties.Identifiers.ExpirationDate;
 
         public GS1ParserService()
         {

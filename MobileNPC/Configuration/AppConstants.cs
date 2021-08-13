@@ -10,4 +10,10 @@
         public const string AkeneoConfigUrl = "AkeneoConfigUrl";
         public const string EnvironmentName = "EnvironmentName";
     }
+
+    public class Countries
+    {
+        public const string Malawi = "Malawi";
+        public const string Rwanda = "Rwanda";
+    }
 }

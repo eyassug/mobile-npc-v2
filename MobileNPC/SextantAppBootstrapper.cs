@@ -40,9 +40,19 @@
                 UserName = Configuration.AppConstants.Username,
                 Password = Configuration.AppConstants.Password
             };
-            var configuration = string.Compare(Configuration.AppConstants.EnvironmentName, "Rwanda", StringComparison.InvariantCultureIgnoreCase) == 0
-                            ? Core.Models.ProductConfiguration.Rwanda
-                            : Core.Models.ProductConfiguration.Default;
+            Core.Models.ProductConfiguration configuration;
+            switch (Configuration.AppConstants.EnvironmentName)
+            {
+                case Configuration.Countries.Malawi:
+                    configuration = Core.Models.ProductConfiguration.Malawi;
+                    break;
+                case Configuration.Countries.Rwanda:
+                    configuration = Core.Models.ProductConfiguration.Rwanda;
+                    break;
+                default:
+                    configuration = Core.Models.ProductConfiguration.Default;
+                    break;
+            }
             dependencyResolver.RegisterLazySingleton<IProductService>(() => new AttributeProductService(akeneoOptions, configuration));
 #endif
 
