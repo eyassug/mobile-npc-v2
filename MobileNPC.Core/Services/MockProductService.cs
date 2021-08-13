@@ -18,6 +18,18 @@
             return new Models.Product(product, Models.ProductConfiguration.Default);
         }
 
+        async public Task<Models.Product> GetAsync(string code, GS1Properties properties)
+        {
+            var product = await GetProductAsync(code);
+            return new Models.Product(product, Models.ProductConfiguration.Default, new GS1Properties
+            {
+                GTIN = code,
+                BatchOrLotNumber = "B123",
+                ProductionDate = "210101",
+                ExpirationDate = "220101"
+            });
+        }
+
         public Task<Product> GetProductAsync(string code)
         {
             return Task.FromResult(new Product
