@@ -9,7 +9,7 @@
         public string GTINAttribute { get; set; }
         public List<AttributeConfiguration> AttributeConfigurations { get; set; } = new List<AttributeConfiguration>();
 
-        public static ProductConfiguration Default => Rwanda;
+        public static ProductConfiguration Default => Malawi;
 
         public static ProductConfiguration Malawi => new ProductConfiguration
         {
@@ -22,7 +22,9 @@
                 new AttributeConfiguration {Code = "GS1_PLACEOFPRODUCTACTIVITYCOUNTRYOFORIGINCOUNTRYCODE", Label = "Country Of Origin"},
                 new AttributeConfiguration {Code = "GS1_BRANDNAME", Label = "Brand Name"},
                 new AttributeConfiguration {Code = "GS1_FUNCTIONALNAME", Label = "Functional Name"},
-                new AttributeConfiguration {Code = "MANUFACTURER_NAME", Label = "Manufacturer Name"}
+                new AttributeConfiguration {Code = "MANUFACTURER_NAME", Label = "Manufacturer Name"},
+                new AttributeConfiguration {Code = Services.GS1Properties.Identifiers.ProductionDate, Label = "Production Date"},
+                new AttributeConfiguration {Code = Services.GS1Properties.Identifiers.ExpirationDate, Label = "Expiration Date"}
             }
         };
 
@@ -39,7 +41,10 @@
                 new AttributeConfiguration {Code = "COUNTRY_OF_ORIGIN", Label = "Country Of Origin"},
                 new AttributeConfiguration {Code = "GS1_BRANDNAME", Label = "Brand Name"},
                 new AttributeConfiguration {Code = "ROUTE_OF_ADMINISTRATION", Label = "Route of Administration"},
-                new AttributeConfiguration {Code = "MANUFACTURER_NAME", Label = "Manufacturer Name"}
+                new AttributeConfiguration {Code = "MANUFACTURER_NAME", Label = "Manufacturer Name"},
+                new AttributeConfiguration {Code = Services.GS1Properties.Identifiers.BatchNumber, Label = "Batch/Lot Number"},
+                new AttributeConfiguration {Code = Services.GS1Properties.Identifiers.ProductionDate, Label = "Production Date"},
+                new AttributeConfiguration {Code = Services.GS1Properties.Identifiers.ExpirationDate, Label = "Expiration Date"}
             }
         };
     }

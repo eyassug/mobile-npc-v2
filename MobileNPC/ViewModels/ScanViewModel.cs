@@ -55,8 +55,8 @@ namespace MobileNPC.ViewModels
                 var barcodeResult = await barcodeScannerService.ReadBarcodeResultAsync();
                 if (barcodeResult != null)
                 {
-                    var gtin = gS1ParserService.GetGTIN(barcodeResult.Text);
-
+                    var properties = gS1ParserService.GetCommonIdentifiers(barcodeResult.Text);
+                    var gtin = properties.GTIN;
                     // Validate GS1 Barcode
                     if (!string.IsNullOrEmpty(gtin))
                     {
@@ -66,7 +66,7 @@ namespace MobileNPC.ViewModels
                         }
                         else
                         {
-                            var product = await productService.GetAsync(gtin);
+                            var product = await productService.GetAsync(gtin, properties);
                             if (product != null)
                                 NavigationService.PushPage(new ProductDetailViewModel(ViewStackService),
                                     new NavigationParameter { { ProductDetailViewModel.ParameterName, product } })
