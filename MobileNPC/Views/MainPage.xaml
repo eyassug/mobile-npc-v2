@@ -5,6 +5,8 @@
                          xmlns:rxui="clr-namespace:ReactiveUI.XamForms;assembly=ReactiveUI.XamForms"
                          xmlns:vm="clr-namespace:MobileNPC.ViewModels;assembly=MobileNPC"
                          x:Name="MainNavigationTabbedView"
-                         x:TypeArguments="vm:MainViewModel">
+                         x:TypeArguments="vm:MainViewModel"
+                         BarBackgroundColor="#e8eaf6"
+                         BarTextColor="Black">
     
 </rxui:ReactiveTabbedPage>

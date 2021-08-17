@@ -10,15 +10,15 @@
         <ResourceDictionary>
 
             <Color x:Key="PageBackgroundColor">White</Color>
-            <Color x:Key="NavigationBarColor">#96d1ff</Color>
-            <Color x:Key="ButtonColor">#2196F3</Color>
-            <Color x:Key="PrimaryColor">WhiteSmoke</Color>
+            <Color x:Key="NavigationBarColor">#1a237e</Color>
+            <Color x:Key="ButtonColor">#1a237e</Color>
+            <Color x:Key="PrimaryColor">#1a237e</Color>
             <Color x:Key="SecondaryColor">Black</Color>
             <Color x:Key="PrimaryTextColor">Black</Color>
             <Color x:Key="SecondaryTextColor">White</Color>
             <Color x:Key="TertiaryTextColor">Gray</Color>
             <Color x:Key="TransparentColor">Transparent</Color>
-             <!--Global Styles-->
+             <!--Global Styles
             <Color x:Key="NavigationPrimary">WhiteSmoke</Color>
             <Style TargetType="NavigationPage">
                 <Setter Property="BarBackgroundColor" Value="{StaticResource NavigationBarColor}" />
@@ -40,7 +40,7 @@
             </Style>
             <Style TargetType="ContentPage">
                 <Setter Property="BackgroundColor" Value="{StaticResource PageBackgroundColor}" />
-            </Style>
+            </Style>-->
         </ResourceDictionary>
     </Application.Resources>
     
