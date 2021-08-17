@@ -2,6 +2,7 @@
 using System.Windows.Input;
 using BarcodeScanner;
 using ReactiveUI;
+using ReactiveUI.Fody.Helpers;
 using Rg.Plugins.Popup.Services;
 using Sextant;
 using Splat;
@@ -25,8 +26,11 @@ namespace MobileNPC.ViewModels
             {
                 var result = await BarcodeScanner.ReadBarcodeAsync();
             });
+            CountryName = Configuration.AppConstants.EnvironmentName;
         }
 
         public ICommand OpenWebCommand { get; }
+        [Reactive]
+        public string CountryName { get; set; }
     }
 }

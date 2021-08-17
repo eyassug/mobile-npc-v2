@@ -36,9 +36,12 @@ namespace MobileNPC.ViewModels
         public Interaction<string, Unit> NotConnectedInteraction => notConnectedInteraction;
         public Interaction<string, Unit> PermissionNotGrantedInteraction => permissionNotGrantedInteraction;
         public ReactiveCommand<Unit, Unit> ScanCommand { get; private set; }
+        [Reactive]
+        public string CountryName { get; set; }
 
         public ScanViewModel(IViewStackService viewStackService) : base(viewStackService)
         {
+            CountryName = Configuration.AppConstants.EnvironmentName;
             notFoundInteration = new Interaction<string, Unit>();
             invalidBarcodeInteration = new Interaction<string, Unit>();
             notConnectedInteraction = new Interaction<string, Unit>();

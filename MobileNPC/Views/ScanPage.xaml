@@ -12,15 +12,7 @@
                 AlignItems="Center"
                 JustifyContent="Start" Margin="20,10"
                 VerticalOptions="Center">
-        <Label FontSize="22" HorizontalTextAlignment="Center">
-                    <Label.FormattedText>
-                        <FormattedString>
-                            <FormattedString.Spans>
-                                <Span Text="Welcome to the National Product Catalog of Malawi" FontAttributes="Bold" FontSize="18" />
-                            </FormattedString.Spans>
-                        </FormattedString>
-                    </Label.FormattedText>
-                </Label>
+        
         <!-- Body -->
         
         <FlexLayout Direction="Column" FlexLayout.Grow="1" AlignItems="Center" JustifyContent="Center">
@@ -28,10 +20,20 @@
             
             <Grid RowDefinitions="Auto, *">
         <StackLayout  VerticalOptions="FillAndExpand" HorizontalOptions="Fill">
-            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
+            <StackLayout Orientation="Vertical" HorizontalOptions="Center" VerticalOptions="Center">
                 <ContentView Padding="0,40,0,40" VerticalOptions="FillAndExpand" WidthRequest="200" HeightRequest="200">
                     <Image x:Name="ImageBarcodeScanner" />
                 </ContentView>
+                <Label FontSize="22" HorizontalTextAlignment="Center">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <FormattedString.Spans>
+                                <Span Text="Welcome to the National Product Catalog of " FontAttributes="Bold" FontSize="18" />
+                                <Span x:Name="CountryName" Text="{Binding CountryName}" FontAttributes="Bold" FontSize="18" />
+                            </FormattedString.Spans>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
             </StackLayout>
         </StackLayout>
         <ScrollView Grid.Row="1">
