@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+  <item>
+    <color android:color="@color/splash_background"/>
+  </item>
+    <item android:drawable="@drawable/npc_icon"
+        android:bottom="214dp"
+        android:top="214dp"
+        android:left="100dp"
+        android:right="100dp"
+        android:gravity="center"
+        android:height="200dp"
+        android:width="200dp"
+        android:tileMode="repeat">
+    </item>
+</layer-list>

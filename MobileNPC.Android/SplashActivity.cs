@@ -8,7 +8,7 @@ using Android.Content;
 
 namespace MobileNPC.Droid
 {
-    [Activity(Theme = "@style/MyTheme.Splash", MainLauncher = true, NoHistory = true)]
+    [Activity(Theme = Configuration.AppConstants.SplashThemeName, MainLauncher = true, NoHistory = true)]
     public class SplashActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
         static readonly string TAG = "X:" + typeof(SplashActivity).Name;
