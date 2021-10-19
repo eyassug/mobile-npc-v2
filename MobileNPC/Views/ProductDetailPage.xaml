@@ -10,7 +10,7 @@
     x:Class="MobileNPC.Views.ProductDetailPage"
     x:TypeArguments="vm:ProductDetailViewModel"
     Visual="Material">
-    <Grid RowDefinitions="*"> 
+    <Grid RowDefinitions="*">
       <ScrollView VerticalScrollBarVisibility="Never">
              <Grid RowDefinitions="Auto,*" ColumnDefinitions="*,*" Margin="0,0,0,0">
                  <ffimageloading:CachedImage x:Name="ImageProduct"
@@ -38,11 +38,9 @@
                                    </DataTemplate>
                             </CollectionView.ItemTemplate>
                     </CollectionView>
-                   <!-- Here add the code that is being explained in this block-->
                  
              </Grid> 
       </ScrollView>
-       <!-- Here add the code that is being explained in this block number five (5)-->
     </Grid>
     
 </rx:ReactiveContentPage>

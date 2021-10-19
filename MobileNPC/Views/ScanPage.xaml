@@ -34,6 +34,15 @@
                         </FormattedString>
                     </Label.FormattedText>
                 </Label>
+                <Label FontSize="18" HorizontalTextAlignment="Center">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <FormattedString.Spans>
+                                <Span Text="GS1 GTIN Verification App" FontAttributes="Bold" FontSize="18" />                               
+                            </FormattedString.Spans>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
             </StackLayout>
         </StackLayout>
         <ScrollView Grid.Row="1">

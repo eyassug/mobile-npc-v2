@@ -44,6 +44,7 @@
     <None Remove="Resources\scan-qr-code.json" />
     <None Remove="Resources\icon.png" />
     <None Remove="Resources\coa_malawi.png" />
+    <None Remove="Resources\verified_icon.png" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\tab_about.png" />
@@ -56,6 +57,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\npc_icon.png" />
     <EmbeddedResource Include="Resources\coa_malawi.png" />
+    <EmbeddedResource Include="Resources\verified_icon.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />

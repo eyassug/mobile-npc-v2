@@ -23,7 +23,8 @@
                 new AttributeConfiguration {Code = "GS1_BRANDNAME", Label = "Brand Name"},
                 new AttributeConfiguration {Code = "GS1_FUNCTIONALNAME", Label = "Functional Name"},
                 new AttributeConfiguration {Code = "MANUFACTURER_NAME", Label = "Manufacturer Name"},
-                new AttributeConfiguration {Code = Services.GS1Properties.Identifiers.ProductionDate, Label = "Production Date"},
+                new AttributeConfiguration {Code = "GS1_TRADEITEMDESCRIPTION", Label = "Description"},
+                new AttributeConfiguration {Code = Services.GS1Properties.Identifiers.BatchNumber, Label = "Batch Number"},
                 new AttributeConfiguration {Code = Services.GS1Properties.Identifiers.ExpirationDate, Label = "Expiration Date"}
             }
         };
