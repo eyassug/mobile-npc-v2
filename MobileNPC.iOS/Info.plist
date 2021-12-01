@@ -25,7 +25,7 @@
 	<key>CFBundleDisplayName</key>
 	<string>MobileNPC</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.chemonics.MobileNPC</string>
+	<string>com.chemonics.malawinpc</string>
 	<key>CFBundleVersion</key>
 	<string>1.0</string>
 	<key>UILaunchStoryboardName</key>
