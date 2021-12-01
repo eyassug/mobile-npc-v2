@@ -2,6 +2,7 @@
 using AP.MobileToolkit.Markup;
 using ReactiveUI;
 using ReactiveUI.XamForms;
+using Xamarin.Forms;
 
 namespace MobileNPC.Views
 {
@@ -10,7 +11,7 @@ namespace MobileNPC.Views
         public ProductDetailPage()
         {
             InitializeComponent();
-            
+            ImageVerified.Source = ImageSource.FromResource("MobileNPC.Resources.verified_icon.png");
             this.WhenActivated(disposables =>
             {
                 this.Bind(ViewModel, vm => vm.Image, v => v.ImageProduct.Source).DisposeWith(disposables);

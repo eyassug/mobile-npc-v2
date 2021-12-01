@@ -18,6 +18,11 @@
                                              VerticalOptions="StartAndExpand"
                                              Aspect="AspectFill" HeightRequest="250"
                                              DownsampleToViewSize="true" />
+                 <Image x:Name="ImageVerified"
+                                             Grid.Row="0" Grid.Column="1"
+                                             VerticalOptions="Start"
+                                             HorizontalOptions="End"
+                                             Width="50" />
                  
                      <CollectionView x:Name="ListAttributes" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"  
                                Margin="0,10,0,0"
