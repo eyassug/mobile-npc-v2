@@ -53,12 +53,13 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <MtouchArch>ARM64</MtouchArch>
-    <CodesignKey>iPhone Developer</CodesignKey>
+    <CodesignKey>iPhone Distribution</CodesignKey>
     <MtouchDebug>true</MtouchDebug>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <MtouchLink>None</MtouchLink>
     <MtouchInterpreter>-all</MtouchInterpreter>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <CodesignProvision>NPC Malawi Profile</CodesignProvision>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
     <DebugType>none</DebugType>
@@ -70,8 +71,10 @@
     <CodesignKey>Apple Distribution: Joelle Hopkins (3FRRTBK7HT)</CodesignKey>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
-    <MtouchLink>SdkOnly</MtouchLink>
+    <MtouchLink>None</MtouchLink>
     <CodesignProvision>NPC Malawi Provision Profile</CodesignProvision>
+    <MtouchSdkVersion>14.4</MtouchSdkVersion>
+    <MtouchFloat32>true</MtouchFloat32>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Main.cs" />
@@ -203,10 +206,17 @@
     <PackageReference Include="ReactiveUI.Events.XamEssentials">
       <Version>13.3.2</Version>
     </PackageReference>
-    <PackageReference Include="AP.MobileToolkit.FontGenerator">
-      <Version>3.1.1</Version>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-      <PrivateAssets>all</PrivateAssets>
+    <PackageReference Include="AP.MobileToolkit.Forms">
+      <Version>3.1.4-beta</Version>
+    </PackageReference>
+    <PackageReference Include="AP.MobileToolkit.Forms.Fonts">
+      <Version>3.0.0.1540-pre</Version>
+    </PackageReference>
+    <PackageReference Include="AP.MobileToolkit.Forms.Fonts.FontAwesomeFree.Brands">
+      <Version>3.0.0.1540-pre</Version>
+    </PackageReference>
+    <PackageReference Include="AP.MobileToolkit.Forms.Fonts.FontAwesomeFree.Regular">
+      <Version>3.0.0.1540-pre</Version>
     </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
