@@ -73,7 +73,7 @@
     <CodesignKey>iPhone Distribution</CodesignKey>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
-    <MtouchLink>None</MtouchLink>
+    <MtouchLink>SdkOnly</MtouchLink>
     <CodesignProvision>Malawi NPC Profile</CodesignProvision>
     <MtouchFloat32>true</MtouchFloat32>
     <MtouchUseLlvm>true</MtouchUseLlvm>
