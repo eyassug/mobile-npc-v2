@@ -22,9 +22,9 @@ namespace MobileNPC.iOS
         //
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
-#if ENABLE_TEST_CLOUD
-            Xamarin.Calabash.Start();
-#endif
+//#if ENABLE_TEST_CLOUD
+//            Xamarin.Calabash.Start();
+//#endif
 
             global::Rg.Plugins.Popup.Popup.Init();
             global::FFImageLoading.Forms.Platform.CachedImageRenderer.Init();

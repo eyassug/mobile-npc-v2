@@ -57,7 +57,7 @@
 #endif
 
             dependencyResolver.RegisterConstant(new GS1ParserService(), typeof(IGS1ParserService));
-            dependencyResolver.RegisterConstant(new Services.Connectivity(), typeof(Services.IConnectivity));
+            //dependencyResolver.RegisterConstant(new Services.Connectivity(), typeof(Services.IConnectivity));
             dependencyResolver
                 .RegisterView<TabPage, TabViewModel>()
                 .RegisterView<MainPage, MainViewModel>()
