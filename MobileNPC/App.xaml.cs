@@ -2,7 +2,6 @@
 using Microsoft.AppCenter;
 using Microsoft.AppCenter.Analytics;
 using Microsoft.AppCenter.Crashes;
-using AP.MobileToolkit.Fonts;
 
 namespace MobileNPC
 {
@@ -11,9 +10,9 @@ namespace MobileNPC
 
         public App()
         {
-            FontRegistry.RegisterFonts(FontAwesomeBrands.Font,
-                                       FontAwesomeRegular.Font,
-                                       FontAwesomeSolid.Font);
+            //FontRegistry.RegisterFonts(FontAwesomeBrands.Font,
+            //                           FontAwesomeRegular.Font,
+            //                           FontAwesomeSolid.Font);
 
             InitializeComponent();
 

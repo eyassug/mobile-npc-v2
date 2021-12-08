@@ -5,9 +5,6 @@
     using ReactiveUI;
     using Xamarin.Forms;
     using System.Reactive.Disposables;
-    using AP.MobileToolkit.Markup;
-    using System.Reactive;
-    using System.Diagnostics;
     using System.Reactive.Linq;
 
     public class TabViewModel : BaseViewModel, ITabViewModel
@@ -27,7 +24,7 @@
         public TabViewModel(string tabTitle, string tabIconFont, IViewStackService viewStackService, Func<IViewModel> pageCreate)
             : this(tabTitle, viewStackService, pageCreate)
         {
-            TabIcon = new FontImageSource().SetIcon(tabIconFont);
+            //TabIcon = new FontImageSource().SetIcon(tabIconFont);
         }
 
         public TabViewModel(string tabTitle, ImageSource tabIconImage, IViewStackService viewStackService, Func<IViewModel> pageCreate)
