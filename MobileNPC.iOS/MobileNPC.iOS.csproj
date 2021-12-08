@@ -77,7 +77,7 @@
     <CodesignProvision>Malawi NPC Profile</CodesignProvision>
     <MtouchFloat32>true</MtouchFloat32>
     <MtouchUseLlvm>true</MtouchUseLlvm>
-    <MtouchExtraArgs>--linkskip=Xamarin.Forms.Core</MtouchExtraArgs>
+    <MtouchSdkVersion>14.4</MtouchSdkVersion>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Main.cs" />

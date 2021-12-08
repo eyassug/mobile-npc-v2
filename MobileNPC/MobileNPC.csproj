@@ -20,14 +20,12 @@
     <PackageReference Include="ReactiveUI.XamForms" Version="13.3.2" />
     <PackageReference Include="ReactiveUI.Fody" Version="13.3.2" />
     <PackageReference Include="ReactiveUI.Events.XamForms" Version="13.3.2" />
-    <PackageReference Include="Microsoft.AppCenter.Crashes" Version="4.2.0" />
-    <PackageReference Include="Microsoft.AppCenter.Analytics" Version="4.2.0" />
+    <PackageReference Include="Microsoft.AppCenter.Crashes" Version="4.4.0" />
+    <PackageReference Include="Microsoft.AppCenter.Analytics" Version="4.4.0" />
     <PackageReference Include="ZXing.Net.Mobile.Forms" Version="2.4.1" />
     <PackageReference Include="BarcodeScanning.Service" Version="1.1.0.286" />
     <PackageReference Include="Rg.Plugins.Popup" Version="1.1.5.188" />
     <PackageReference Include="Sextant.XamForms" Version="2.12.4" />
-    <PackageReference Include="Microsoft.Extensions.Configuration" Version="5.0.0" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="5.0.0" />
     <PackageReference Include="Xamarin.FFImageLoading.Forms" Version="2.4.11.982" />
     <PackageReference Include="Xamarin.FFImageLoading" Version="2.4.11.982" />
     <PackageReference Include="ReactiveUI.Events.XamEssentials" Version="13.3.2" />
