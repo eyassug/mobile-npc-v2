@@ -16,6 +16,8 @@
     <MtouchHttpClientHandler>NSUrlSessionHandler</MtouchHttpClientHandler>
     <ProvisioningType>automatic</ProvisioningType>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <ReleaseVersion>1.0.1</ReleaseVersion>
+    <SynchReleaseVersion>false</SynchReleaseVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhoneSimulator' ">
     <DebugSymbols>true</DebugSymbols>
@@ -56,7 +58,7 @@
     <CodesignKey>iPhone Distribution</CodesignKey>
     <MtouchDebug>true</MtouchDebug>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
-    <MtouchLink>None</MtouchLink>
+    <MtouchLink>SdkOnly</MtouchLink>
     <MtouchInterpreter>-all</MtouchInterpreter>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <CodesignProvision>NPC Malawi Profile</CodesignProvision>
@@ -73,8 +75,8 @@
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <MtouchLink>None</MtouchLink>
     <CodesignProvision>NPC Malawi Provision Profile</CodesignProvision>
-    <MtouchSdkVersion>14.4</MtouchSdkVersion>
     <MtouchFloat32>true</MtouchFloat32>
+    <MtouchUseLlvm>true</MtouchUseLlvm>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Main.cs" />
@@ -166,9 +168,9 @@
     <Reference Include="System.Numerics.Vectors" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2244" />
     <PackageReference Include="Xamarin.TestCloud.Agent" Version="0.22.2" />
-    <PackageReference Include="Xamarin.Essentials" Version="1.6.1" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.7.0" />
     <PackageReference Include="Com.Airbnb.Xamarin.Forms.Lottie" Version="4.0.9" />
     <PackageReference Include="ReactiveUI.XamForms">
       <Version>13.3.2</Version>
