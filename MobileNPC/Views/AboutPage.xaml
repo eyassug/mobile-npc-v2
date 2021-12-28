@@ -23,7 +23,7 @@
                     <Label.FormattedText>
                         <FormattedString>
                             <FormattedString.Spans>
-                                <Span Text="National Product Catalog" FontAttributes="Bold" FontSize="22" />
+                                <Span Text="GS1 Product Catalog" FontAttributes="Bold" FontSize="22" />
                                 <Span Text=" " />
                                 <Span Text="1.0" />
                             </FormattedString.Spans>
@@ -35,10 +35,10 @@
                         <FormattedString>
                             <FormattedString.Spans>
                                 <Span Text="This app scans GS1 barcodes for health  " />
-                                <Span Text="commodities and displays product information " />
-                                <Span Text="from the National Product Catalog of " />
+                                <Span Text="commodities and displays product information." />
+                                <!--<Span Text="from the National Product Catalog of " />
                                 <Span Text="{Binding CountryName}" FontAttributes="Bold" />
-                                <Span Text="." />
+                                <Span Text="." />-->
                             </FormattedString.Spans>
                         </FormattedString>
                     </Label.FormattedText>
