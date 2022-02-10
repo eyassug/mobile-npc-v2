@@ -14,10 +14,7 @@ namespace MobileNPC.Views
         public ScanPage()
         {
             InitializeComponent();
-            if(Configuration.AppConstants.EnvironmentName == Configuration.Countries.Malawi)
-                ImageBarcodeScanner.Source = ImageSource.FromResource("MobileNPC.Resources.coa_malawi.png");
-            else
-                ImageBarcodeScanner.Source = ImageSource.FromResource("MobileNPC.Resources.npc_icon.png");
+            ImageBarcodeScanner.Source = ImageSource.FromResource("MobileNPC.Resources.npc_icon.png");
             this.WhenActivated(disposables =>
             {
                 this.BindInteraction(ViewModel,
