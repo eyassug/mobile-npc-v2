@@ -10,10 +10,7 @@ namespace MobileNPC.Views
         public AboutPage()
         {
             InitializeComponent();
-            if (Configuration.AppConstants.EnvironmentName == Configuration.Countries.Malawi)
-                ImageLogo.Source = ImageSource.FromResource("MobileNPC.Resources.coa_malawi.png");
-            else
-                ImageLogo.Source = ImageSource.FromResource("MobileNPC.Resources.npc_icon.png");
+            ImageLogo.Source = ImageSource.FromResource("MobileNPC.Resources.npc_icon.png");
         }
     }
 }
