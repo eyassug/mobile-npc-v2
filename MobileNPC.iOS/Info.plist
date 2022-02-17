@@ -25,9 +25,9 @@
 	<key>CFBundleDisplayName</key>
 	<string>MobileNPC</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.chemonics.npcmalawi</string>
+	<string>com.chemonics.pcmtmobile</string>
 	<key>CFBundleVersion</key>
-	<string>1.0.7</string>
+	<string>1.0.8</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>CFBundleName</key>
