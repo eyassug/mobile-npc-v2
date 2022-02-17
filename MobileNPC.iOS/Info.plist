@@ -27,7 +27,7 @@
 	<key>CFBundleIdentifier</key>
 	<string>com.chemonics.npcmalawi</string>
 	<key>CFBundleVersion</key>
-	<string>1.0.6</string>
+	<string>1.0.7</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>CFBundleName</key>
@@ -35,7 +35,7 @@
 	<key>XSAppIconAssets</key>
 	<string>Assets.xcassets/AppIcon.appiconset</string>
 	<key>NSCameraUsageDescription</key>
-	<string>Allow the App to use Camera</string>
+	<string>Allow the App to use Camera to be able to scan GS1 barcodes and display product information</string>
 	<key>CFBundleShortVersionString</key>
 	<string>1.0.0</string>
 	<key>NSContactsUsageDescription</key>
