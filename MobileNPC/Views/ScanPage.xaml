@@ -23,7 +23,7 @@
                 <ContentView Padding="0,40,0,40" VerticalOptions="FillAndExpand" WidthRequest="200" HeightRequest="200">
                     <Image x:Name="ImageBarcodeScanner" />
                 </ContentView>
-                <!--<Label FontSize="22" HorizontalTextAlignment="Center">
+                <Label FontSize="22" HorizontalTextAlignment="Center">
                     <Label.FormattedText>
                         <FormattedString>
                             <FormattedString.Spans>
@@ -32,7 +32,7 @@
                             </FormattedString.Spans>
                         </FormattedString>
                     </Label.FormattedText>
-                </Label>-->
+                </Label>
                 <Label FontSize="18" HorizontalTextAlignment="Center">
                     <Label.FormattedText>
                         <FormattedString>
