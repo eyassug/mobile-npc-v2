@@ -10,7 +10,7 @@ namespace MobileNPC.Views
         public AboutPage()
         {
             InitializeComponent();
-            ImageLogo.Source = ImageSource.FromResource("MobileNPC.Resources.npc_icon.png");
+            ImageLogo.Source = ImageSource.FromResource("MobileNPC.Resources.coa_malawi.png");
         }
     }
 }

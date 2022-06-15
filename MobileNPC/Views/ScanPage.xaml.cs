@@ -14,7 +14,7 @@ namespace MobileNPC.Views
         public ScanPage()
         {
             InitializeComponent();
-            ImageBarcodeScanner.Source = ImageSource.FromResource("MobileNPC.Resources.npc_icon.png");
+            ImageBarcodeScanner.Source = ImageSource.FromResource("MobileNPC.Resources.coa_malawi.png");
             this.WhenActivated(disposables =>
             {
                 this.BindInteraction(ViewModel,
