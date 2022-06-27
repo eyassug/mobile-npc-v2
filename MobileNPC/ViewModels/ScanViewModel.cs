@@ -69,15 +69,22 @@ namespace MobileNPC.ViewModels
                         }
                         else
                         {
-                            var product = await productService.GetAsync(gtin, properties);
-                            if (product != null)
-                                NavigationService.PushPage(new ProductDetailViewModel(ViewStackService),
-                                    new NavigationParameter { { ProductDetailViewModel.ParameterName, product } })
-                                        .Subscribe()
-                                        .DisposeWith(Disposables);
-                            else
+                            try
                             {
-                                _ = await ProductNotFoundInteraction.Handle($"A product with the specified GTIN '{gtin}' could not be found!");
+                                var product = await productService.GetAsync(gtin, properties);
+                                if (product != null)
+                                    NavigationService.PushPage(new ProductDetailViewModel(ViewStackService),
+                                        new NavigationParameter { { ProductDetailViewModel.ParameterName, product } })
+                                            .Subscribe()
+                                            .DisposeWith(Disposables);
+                                else
+                                {
+                                    _ = await ProductNotFoundInteraction.Handle($"A product with the specified GTIN '{gtin}' could not be found!");
+                                }
+                            }
+                            catch(System.Exception ex)
+                            {
+                                _ = await ProductNotFoundInteraction.Handle(ex.Message);
                             }
                         }
                     }
