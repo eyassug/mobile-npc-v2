@@ -53,7 +53,7 @@
                     configuration = Core.Models.ProductConfiguration.Default;
                     break;
             }
-            dependencyResolver.RegisterLazySingleton<IProductService>(() => new AttributeProductService(akeneoOptions, configuration));
+            dependencyResolver.RegisterLazySingleton<IProductService>(() => new ProductService(akeneoOptions, configuration));
 #endif
 
             dependencyResolver.RegisterConstant(new GS1ParserService(), typeof(IGS1ParserService));
