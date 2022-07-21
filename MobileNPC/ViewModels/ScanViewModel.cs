@@ -84,7 +84,7 @@ namespace MobileNPC.ViewModels
                             }
                             catch(Exception ex)
                             {
-                                _ = await NotConnectedInteraction.Handle($"Error: {ex.Message}");
+                                _ = await NotConnectedInteraction.Handle($"Error: {ex.Message}\n{ex.InnerException?.Message}\n{ex?.InnerException?.InnerException?.Message}");
                             }
                         }
                     }
