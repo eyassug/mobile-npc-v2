@@ -54,6 +54,16 @@ namespace MobileNPC.Views
                                 "OK");
                             context.SetOutput(Unit.Default);
                         }).DisposeWith(disposables);
+                
+                this.BindInteraction(ViewModel,
+                        vm => vm.ProductFoundInteraction,
+                        async context =>
+                        {
+                            await this.DisplayAlert("Product Found",
+                                $"{context.Input}",
+                                "OK");
+                            context.SetOutput(Unit.Default);
+                        }).DisposeWith(disposables);
 
                 this.BindCommand(ViewModel, x => x.ScanCommand, x => x.ButtonScan)
                     .DisposeWith(disposables);

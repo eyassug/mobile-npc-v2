@@ -24,6 +24,7 @@ namespace MobileNPC.ViewModels
         private readonly Interaction<string, Unit> invalidBarcodeInteration;
         private readonly Interaction<string, Unit> notConnectedInteraction;
         private readonly Interaction<string, Unit> permissionNotGrantedInteraction;
+        private readonly Interaction<string, Unit> productFoundInteraction;
         public override string Id => "Scan Barcode";
         private IBarcodeScannerService barcodeScannerService { get => _barcodeScannerService.Value; }
         private IGS1ParserService gS1ParserService { get => _gS1ParserService.Value; }
@@ -35,6 +36,7 @@ namespace MobileNPC.ViewModels
         public Interaction<string, Unit> InvalidBarcodeInteraction => invalidBarcodeInteration;
         public Interaction<string, Unit> NotConnectedInteraction => notConnectedInteraction;
         public Interaction<string, Unit> PermissionNotGrantedInteraction => permissionNotGrantedInteraction;
+        public Interaction<string, Unit> ProductFoundInteraction => productFoundInteraction;
         public ReactiveCommand<Unit, Unit> ScanCommand { get; private set; }
         [Reactive]
         public string CountryName { get; set; }
@@ -46,6 +48,7 @@ namespace MobileNPC.ViewModels
             invalidBarcodeInteration = new Interaction<string, Unit>();
             notConnectedInteraction = new Interaction<string, Unit>();
             permissionNotGrantedInteraction = new Interaction<string, Unit>();
+            productFoundInteraction = new Interaction<string, Unit>();
             ScanCommand = ReactiveCommand.CreateFromTask(async () =>
             {
                 // Check permission
@@ -73,10 +76,14 @@ namespace MobileNPC.ViewModels
                             {
                                 var product = await productService.GetAsync(gtin, properties);
                                 if (product != null)
+                                {
+                                    _ = await ProductFoundInteraction.Handle($"Identifier{product.Identifier}\n{product.Attributes?.Count} Attributes.");
                                     NavigationService.PushPage(new ProductDetailViewModel(ViewStackService),
                                         new NavigationParameter { { ProductDetailViewModel.ParameterName, product } })
                                             .Subscribe()
                                             .DisposeWith(Disposables);
+                                }
+                                    
                                 else
                                 {
                                     _ = await ProductNotFoundInteraction.Handle($"A product with the specified GTIN '{gtin}' could not be found!");
