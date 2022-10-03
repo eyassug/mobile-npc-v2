@@ -11,6 +11,8 @@ using System.Reactive.Linq;
 using Xamarin.Forms;
 using System.Reactive.Disposables;
 using Xamarin.Essentials;
+using Microsoft.AppCenter.Analytics;
+using System.Collections.Generic;
 
 namespace MobileNPC.ViewModels
 {
@@ -68,16 +70,27 @@ namespace MobileNPC.ViewModels
                     {
                         if (NetworkAccess != Xamarin.Essentials.NetworkAccess.Internet)
                         {
+                            Analytics.TrackEvent("Network Access Unavailable", new Dictionary<string, string> {
+                                        { "GTIN", $"{gtin}" }
+                            });
                             _ = await NotConnectedInteraction.Handle("You are not connected to the internet!");
                         }
                         else
                         {
                             try
                             {
+                                Analytics.TrackEvent("Barcode Scanned", new Dictionary<string, string> {
+                                        { "GTIN", $"{gtin}" }
+                                });
                                 var product = await productService.GetAsync(gtin, properties);
                                 if (product != null)
                                 {
-                                    _ = await ProductFoundInteraction.Handle($"Identifier{product.Identifier}\n{product.Attributes?.Count} Attributes.");
+                                    //_ = await ProductFoundInteraction.Handle($"Identifier{product.Identifier}\n{product.Attributes?.Count} Attributes.");
+                                    Analytics.TrackEvent("Product Found", new Dictionary<string, string> {
+                                        { "GTIN", $"{gtin}" },
+                                        { "Identifier", $"{product.Identifier}"},
+                                        { "Attributes", $"{product.Attributes?.Count}" }
+                                    });
                                     NavigationService.PushPage(new ProductDetailViewModel(ViewStackService),
                                         new NavigationParameter { { ProductDetailViewModel.ParameterName, product } })
                                             .Subscribe()
@@ -86,17 +99,27 @@ namespace MobileNPC.ViewModels
                                     
                                 else
                                 {
+                                    Analytics.TrackEvent("Product Not Found", new Dictionary<string, string> {
+                                        { "GTIN", $"{gtin}" }
+                                    });
                                     _ = await ProductNotFoundInteraction.Handle($"A product with the specified GTIN '{gtin}' could not be found!");
                                 }
                             }
                             catch(Exception ex)
                             {
+                                Analytics.TrackEvent("Other Error", new Dictionary<string, string> {
+                                    { "GTIN", $"{gtin}" },
+                                    { "Error", $"{ex.Message}\n{ex.InnerException?.Message}\n{ex?.InnerException?.InnerException?.Message}" }
+                                });
                                 _ = await NotConnectedInteraction.Handle($"Error: {ex.Message}\n{ex.InnerException?.Message}\n{ex?.InnerException?.InnerException?.Message}");
                             }
                         }
                     }
                     else
                     {
+                        Analytics.TrackEvent("Invalid barcode", new Dictionary<string, string> {
+                            { "Content", $"{barcodeResult.Text}" }
+                        });
                         _ = await InvalidBarcodeInteraction.Handle("The barcode you scanned is not a GS1 barcode.");
                     }
                 }
