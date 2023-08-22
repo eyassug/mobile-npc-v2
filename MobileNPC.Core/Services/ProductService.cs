@@ -60,7 +60,9 @@
         async public Task<Models.Product> GetAsync(string code, GS1Properties properties)
         {
             //TODO: Add PollyRetry
-            var product = await GetProductAsync(code);
+            // Try prefixing 0 to GTIN
+            var gtin = $"0{code}";
+            var product = await GetProductAsync(code) ?? await GetProductAsync(gtin);
             if (product == null) return null;
             return new Models.Product(product, Configuration, properties);
         }
