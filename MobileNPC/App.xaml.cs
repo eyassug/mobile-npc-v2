@@ -22,7 +22,7 @@ namespace MobileNPC
 
         protected override void OnStart()
         {
-            AppCenter.Start("android=ce339a09-3624-41db-9d6b-41f778d9e20f;ios=4675c0bf-7208-4873-969a-235251ceb5b0;",
+            AppCenter.Start("android=c106f68d-0716-451d-94d2-8d233cf9cc86;ios=4675c0bf-7208-4873-969a-235251ceb5b0;",
                   typeof(Analytics), typeof(Crashes));
         }
 
