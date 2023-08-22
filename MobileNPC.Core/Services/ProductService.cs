@@ -27,7 +27,8 @@
         {
             try
             {
-                return await AkeneoClient.GetAsync<Product>(code);
+                var gtin = $"0{code}";
+                return await AkeneoClient.GetAsync<Product>(code) ?? await AkeneoClient.GetAsync<Product>(gtin);
             }
             catch (Exception ex)
             {
