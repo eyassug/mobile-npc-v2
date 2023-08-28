@@ -2,7 +2,7 @@
 {
     public class AppConstants
     {
-        public const string AkeneoUrl = "https://malawi-uat.productcatalog.io";
+        public const string AkeneoUrl = "https://malawi.productcatalog.io";
         public const string Username = "MobileApp";
         public const string Password = "spinach-motet-endanger-wackiness-lew-ensue-yelling-undercut";
         public const string ClientId = "4_5rre1nht3f4sswc08044gg8cs48ckk4ww8wsks00ws0k80sc8g";
