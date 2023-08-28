@@ -28,10 +28,7 @@
         [Obsolete]
         void RegisterParts(IMutableDependencyResolver dependencyResolver)
         {
-#if DEBUG
-            dependencyResolver.RegisterConstant(new MockProductService(), typeof(IProductService));
 
-#else
             var akeneoOptions = new Akeneo.AkeneoOptions
             {
                 ApiEndpoint = new Uri(Configuration.AppConstants.AkeneoUrl),
@@ -54,7 +51,6 @@
                     break;
             }
             dependencyResolver.RegisterLazySingleton<IProductService>(() => new ProductService(akeneoOptions, configuration));
-#endif
 
             dependencyResolver.RegisterConstant(new GS1ParserService(), typeof(IGS1ParserService));
             //dependencyResolver.RegisterConstant(new Services.Connectivity(), typeof(Services.IConnectivity));
