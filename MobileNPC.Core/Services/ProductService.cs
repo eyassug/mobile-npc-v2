@@ -28,7 +28,8 @@
             try
             {
                 var gtin = $"0{code}";
-                return await AkeneoClient.GetAsync<Product>(code) ?? await AkeneoClient.GetAsync<Product>(gtin);
+                var removedPackagingLevel = code.Remove(code.Length - 1);
+                return await AkeneoClient.GetAsync<Product>(code) ?? await AkeneoClient.GetAsync<Product>(gtin) ?? await AkeneoClient.GetAsync<Product>(removedPackagingLevel);
             }
             catch (Exception ex)
             {
@@ -63,7 +64,7 @@
             //TODO: Add PollyRetry
             // Try prefixing 0 to GTIN
             var gtin = $"0{code}";
-            var product = await GetProductAsync(code);// ?? await GetProductAsync(gtin);
+            var product = await GetProductAsync(properties.GTIN);// ?? await GetProductAsync(gtin);
             if (product == null) return null;
             return new Models.Product(product, Configuration, properties);
         }
