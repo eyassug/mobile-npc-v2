@@ -16,7 +16,7 @@
                  <ffimageloading:CachedImage x:Name="ImageProduct"
                                              Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
                                              VerticalOptions="StartAndExpand"
-                                             Aspect="AspectFill" HeightRequest="250"
+                                             Aspect="AspectFit" HeightRequest="250"
                                              DownsampleToViewSize="true" />
                  
                  
