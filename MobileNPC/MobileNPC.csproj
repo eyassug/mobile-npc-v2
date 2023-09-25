@@ -25,6 +25,10 @@
     <PackageReference Include="Xamarin.FFImageLoading.Forms" Version="2.4.11.982" />
     <PackageReference Include="Xamarin.FFImageLoading" Version="2.4.11.982" />
     <PackageReference Include="ReactiveUI.Events.XamEssentials" Version="13.3.2" />
+    <PackageReference Include="AP.MobileToolkit.Forms.Fonts.FontAwesomeFree.Regular" Version="3.0.0.1540-pre" />
+    <PackageReference Include="AP.MobileToolkit.Forms.Fonts" Version="3.0.0.1540-pre" />
+    <PackageReference Include="AP.MobileToolkit.Forms.Fonts.FontAwesomeFree.Solid" Version="3.0.0.1540-pre" />
+    <PackageReference Include="AP.MobileToolkit.Forms.Fonts.FontAwesomeFree.Brands" Version="3.0.0.1540-pre" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MobileNPC.Core\MobileNPC.Core.csproj" />
