@@ -22,14 +22,19 @@ namespace MobileNPC.ViewModels
         public AboutViewModel(IViewStackService viewStackService = null): base(viewStackService)
         {
             BarcodeScanner = Locator.Current.GetService<IBarcodeScannerService>();
-            OpenWebCommand = new Command(async () =>
+            OpenPrivacyPolicy = new Command(async () =>
             {
-                var result = await BarcodeScanner.ReadBarcodeAsync();
+                await Browser.OpenAsync("https://malawinpc.netlify.app/privacy");
+            });
+            OpenTermsAndConditions = new Command(async () =>
+            {
+                await Browser.OpenAsync("https://malawinpc.netlify.app/terms");
             });
             CountryName = Configuration.AppConstants.EnvironmentName;
         }
 
-        public ICommand OpenWebCommand { get; }
+        public ICommand OpenPrivacyPolicy { get; }
+        public ICommand OpenTermsAndConditions { get; }
         [Reactive]
         public string CountryName { get; set; }
     }
